@@ -8,8 +8,8 @@ struct PeriodDurationStep: View {
 
     var body: some View {
         VStack(spacing: SpacingTokens.sm) {
-            Text("Если знаете, сколько обычно длится кровотечение — выберите. Это поможет точнее оценить ближайшие даты.")
-                .font(TypographyTokens.bodyMedium)
+            Text("Если знаешь, сколько обычно длится кровотечение — выбери. Это поможет точнее оценить ближайшие даты.")
+                .font(TypographyTokens.Dynamic.bodyMedium)
                 .foregroundStyle(ColorTokens.textSecondary)
                 .multilineTextAlignment(.center)
 
@@ -25,7 +25,7 @@ struct PeriodDurationStep: View {
             }
 
             Button("Не знаю") { duration = nil; next() }
-                .font(TypographyTokens.labelMedium)
+                .font(TypographyTokens.Dynamic.bodyMedium)
                 .foregroundStyle(ColorTokens.textSecondary)
                 .frame(minHeight: SpacingTokens.touchMinimum)
 
@@ -36,24 +36,30 @@ struct PeriodDurationStep: View {
 
 struct HistoryStep: View {
     @Binding var dates: [Date]
+    let excludedDate: CalendarDate?
     let next: () -> Void
     @State private var newDate = Date()
+
+    private var today: Date { Calendar.current.startOfDay(for: Date()) }
 
     var body: some View {
         VStack(spacing: SpacingTokens.sm) {
             Text("Можно добавить даты начала предыдущих менструаций. Это необязательно — данные всегда можно внести позже.")
-                .font(TypographyTokens.bodyMedium)
+                .font(TypographyTokens.Dynamic.bodyMedium)
                 .foregroundStyle(ColorTokens.textSecondary)
                 .multilineTextAlignment(.center)
 
-            LuneDatePicker(title: "Дата начала", date: $newDate)
+            LuneDatePicker(
+                title: "Дата начала",
+                date: Binding(
+                    get: { min(newDate, today) },
+                    set: { newDate = min($0, today) }
+                ),
+                maximumDate: today
+            )
 
             LuneSecondaryButton(title: "Добавить дату", icon: "plus") {
-                let day = CalendarDate(newDate)
-                guard !dates.contains(where: { CalendarDate($0) == day }) else { return }
-                dates.append(newDate)
-                dates.sort(by: >)
-                AnimationTokens.successHaptic()
+                addDate()
             }
 
             if dates.isEmpty {
@@ -69,7 +75,7 @@ struct HistoryStep: View {
                             Image(systemName: "drop.circle")
                                 .foregroundStyle(ColorTokens.rosePrimary)
                             Text(CalendarDate(date).key)
-                                .font(TypographyTokens.bodyLarge)
+                                .font(TypographyTokens.Dynamic.bodyLarge)
                             Spacer()
                             Button(role: .destructive) {
                                 dates.removeAll { $0 == date }
@@ -77,6 +83,7 @@ struct HistoryStep: View {
                                 Image(systemName: "trash")
                             }
                             .frame(minWidth: SpacingTokens.touchMinimum, minHeight: SpacingTokens.touchMinimum)
+                            .accessibilityLabel("Удалить дату")
                         }
                     }
                 }
@@ -86,6 +93,16 @@ struct HistoryStep: View {
 
             LunePrimaryButton(title: dates.isEmpty ? "Пропустить" : "Продолжить", action: next)
         }
+    }
+
+    private func addDate() {
+        let day = CalendarDate(min(newDate, today))
+        guard day != excludedDate else { return }
+        guard !dates.contains(where: { CalendarDate($0) == day }) else { return }
+
+        dates.append(day.localDate() ?? newDate)
+        dates.sort { CalendarDate($0) > CalendarDate($1) }
+        AnimationTokens.successHaptic()
     }
 }
 
@@ -98,13 +115,14 @@ struct NotificationsStep: View {
             Image(systemName: "bell.badge")
                 .font(.system(size: 44))
                 .foregroundStyle(ColorTokens.rosePrimary)
+                .accessibilityHidden(true)
 
             Text("Мягкие напоминания")
-                .font(TypographyTokens.titleMedium)
+                .font(TypographyTokens.Dynamic.titleMedium)
                 .foregroundStyle(ColorTokens.textPrimary)
 
             Text("Напоминания приходят только с этого устройства. Текст на экране блокировки намеренно нейтральный — он не раскрывает личную информацию.")
-                .font(TypographyTokens.bodyMedium)
+                .font(TypographyTokens.Dynamic.bodyMedium)
                 .foregroundStyle(ColorTokens.textSecondary)
                 .multilineTextAlignment(.center)
 
@@ -121,6 +139,7 @@ struct NotificationsStep: View {
                 if isOn {
                     Task { @MainActor in _ = await NotificationService.requestAuthorization() }
                 }
+                // Отказ в разрешении не блокирует онбординг.
                 next()
             }
         }
@@ -137,19 +156,20 @@ struct BiometricStep: View {
             Image(systemName: "faceid")
                 .font(.system(size: 46))
                 .foregroundStyle(ColorTokens.rosePrimary)
+                .accessibilityHidden(true)
 
             Text("Защита \(BiometricAuth.biometryName)")
-                .font(TypographyTokens.titleMedium)
+                .font(TypographyTokens.Dynamic.titleMedium)
                 .foregroundStyle(ColorTokens.textPrimary)
 
             Text("При желании приложение будет запрашивать аутентификацию владельца устройства при каждом запуске.")
-                .font(TypographyTokens.bodyMedium)
+                .font(TypographyTokens.Dynamic.bodyMedium)
                 .foregroundStyle(ColorTokens.textSecondary)
                 .multilineTextAlignment(.center)
 
             if !BiometricAuth.isAvailable() {
                 Text("На этом устройстве аутентификация недоступна — приложение будет работать без неё.")
-                    .font(TypographyTokens.bodySmall)
+                    .font(TypographyTokens.Dynamic.bodySmall)
                     .foregroundStyle(ColorTokens.textTertiary)
                     .multilineTextAlignment(.center)
             }
@@ -164,18 +184,22 @@ struct BiometricStep: View {
             }
 
             if showWarning {
-                Text("Подтверждение не пройдено — защита не включена.")
-                    .font(TypographyTokens.bodySmall)
+                Text("Подтверждение не пройдено — защита не включена. Это не мешает продолжить.")
+                    .font(TypographyTokens.Dynamic.bodySmall)
                     .foregroundStyle(ColorTokens.warning)
+                    .multilineTextAlignment(.center)
             }
 
             LunePrimaryButton(title: "Продолжить") {
-                if isOn {
-                    Task { @MainActor in
-                        let ok = await BiometricAuth.authenticate(reason: "Включить защиту данных LUNÉ")
-                        if ok { next() } else { isOn = false; showWarning = true }
+                guard isOn else { next(); return }
+                Task { @MainActor in
+                    let ok = await BiometricAuth.authenticate(reason: "Включить защиту данных LUNÉ")
+                    if !ok {
+                        isOn = false
+                        showWarning = true
                     }
-                } else {
+                    // Показываем короткое пояснение и всё равно завершаем шаг.
+                    try? await Task.sleep(nanoseconds: 700_000_000)
                     next()
                 }
             }
@@ -191,15 +215,15 @@ struct FinishStep: View {
         OnboardingStepShell(
             symbol: "checkmark.circle.fill",
             title: "Всё готово",
-            message: "LUNÉ настроен. Вы в любой момент сможете изменить режим, напоминания и уровень приватности в настройках.",
+            message: "LUNÉ настроен с учётом твоего выбора. В любой момент можно изменить режим, напоминания и уровень приватности в настройках.",
             buttonTitle: "Открыть LUNÉ",
             content: {
-                VStack(spacing: SpacingTokens.xxs) {
+                VStack(alignment: .leading, spacing: SpacingTokens.xxs) {
                     Label("Все данные остаются на этом iPhone", systemImage: "iphone")
                     Label("Без интернета, аккаунта и аналитики", systemImage: "wifi.slash")
                     Label("Прогноз — оценка, а не диагноз", systemImage: "info.circle")
                 }
-                .font(TypographyTokens.bodySmall)
+                .font(TypographyTokens.Dynamic.bodySmall)
                 .foregroundStyle(ColorTokens.textSecondary)
                 .frame(maxWidth: .infinity, alignment: .leading)
             },

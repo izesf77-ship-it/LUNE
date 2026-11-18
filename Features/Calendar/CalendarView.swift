@@ -156,18 +156,18 @@ struct CalendarView: View {
     }
 
     private func daysInMonth() -> [CalendarDate?] {
-        let calendar = Calendar.gregorianUTC
-        guard let range = calendar.range(of: .day, in: .month, for: monthAnchor) else { return [] }
-
-        // Заголовок месяца строится в локальном календаре, сетка — в фиксированном UTC.
         let components = Calendar.current.dateComponents([.year, .month], from: monthAnchor)
         let year = components.year ?? 1970
         let month = components.month ?? 1
-
         let firstDay = CalendarDate(year: year, month: month, day: 1)
+
+        // Важно: строим диапазон из самого календарного дня, а не из `monthAnchor`.
+        // Иначе в часовых поясах с положительным смещением 1-е число локально
+        // соответствует последнему дню предыдущего месяца в UTC — сетка получала
+        // лишний день и дублировала последнюю дату месяца.
         let offset = (firstDay.weekday + 5) % 7
         var result: [CalendarDate?] = Array(repeating: nil, count: offset)
-        for day in range {
+        for day in 1...CalendarDate.daysInMonth(year: year, month: month) {
             result.append(CalendarDate(year: year, month: month, day: day))
         }
         while result.count % 7 != 0 { result.append(nil) }

@@ -334,7 +334,7 @@ final class BackupService {
     // MARK: - Apply
 
     private func apply(_ payload: BackupPayload) -> Int {
-        let existingIds = Set(allExistingIds())
+        var existingIds = Set(allExistingIds())
         var inserted = 0
 
         for record in payload.records {
@@ -345,6 +345,8 @@ final class BackupService {
             let day = (record.fields["day"] ?? record.fields["startDay"])
                 .flatMap { CalendarDate(key: $0) }
                 ?? CalendarDate(Date())
+            let endDayKey = record.fields["endDay"] ?? ""
+            let endDay = endDayKey.isEmpty ? nil : CalendarDate(key: endDayKey)
 
             switch record.entity {
             case "UserProfile":
@@ -354,7 +356,7 @@ final class BackupService {
                 database.insert(MenstrualPeriod(
                     id: id,
                     startDay: day,
-                    endDay: (record.fields["endDay"] ?? "").isEmpty ? nil : CalendarDate(key: record.fields["endDay"]!),
+                    endDay: endDay,
                     userReportedDuration: int(record.fields, "reportedDuration"),
                     notes: text(record.fields, "notes")
                 ))
@@ -449,6 +451,8 @@ final class BackupService {
             default:
                 continue
             }
+            // Защита от повторного импорта того же файла и дубликатов внутри него.
+            existingIds.insert(id)
             inserted += 1
         }
 

@@ -74,6 +74,13 @@ struct CalendarDate: Codable, Hashable, Comparable, CustomStringConvertible {
         Calendar.gregorianUTC.component(.weekday, from: utcDate)
     }
 
+    /// Число дней в указанном месяце по фиксированному григорианскому календарю.
+    /// Не зависит от часового пояса устройства.
+    static func daysInMonth(year: Int, month: Int) -> Int {
+        let first = CalendarDate(year: year, month: month, day: 1)
+        return Calendar.gregorianUTC.range(of: .day, in: .month, for: first.utcDate)?.count ?? 30
+    }
+
     static func < (lhs: CalendarDate, rhs: CalendarDate) -> Bool {
         lhs.key < rhs.key
     }

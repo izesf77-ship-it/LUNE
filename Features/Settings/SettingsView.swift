@@ -77,7 +77,24 @@ struct SettingsView: View {
                         .font(TypographyTokens.caption)
                         .foregroundStyle(ColorTokens.textTertiary)
                         .frame(maxWidth: .infinity)
-                        .padding(.bottom, SpacingTokens.sm)
+                        .padding(.top, SpacingTokens.sm)
+
+                    // Маленькая пасхалка — не вкладка и не часть онбординга.
+                    NavigationLink {
+                        LoveLetterView()
+                    } label: {
+                        HStack(spacing: 5) {
+                            Image(systemName: "heart.fill")
+                                .font(.system(size: 10))
+                            Text("С любовью ♡")
+                                .font(TypographyTokens.caption)
+                        }
+                        .foregroundStyle(ColorTokens.roseDeep.opacity(0.8))
+                        .frame(minHeight: SpacingTokens.touchMinimum)
+                    }
+                    .buttonStyle(.plain)
+                    .accessibilityLabel("С любовью")
+                    .padding(.bottom, SpacingTokens.md)
                 }
                 .padding(.horizontal, SpacingTokens.screenHorizontal)
                 .padding(.vertical, SpacingTokens.xs)

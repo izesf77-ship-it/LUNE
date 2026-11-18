@@ -75,8 +75,13 @@ enum NotificationService {
         var requests: [UNNotificationRequest] = []
 
         // Менструация — одноразовое напоминание перед ожидаемой датой.
+        // Прошедшую дату не планируем: такое уведомление никогда не сработает
+        // и только создаст «зависшее» напоминание после редактирования цикла.
         let reminderDay = prediction.nextStart.adding(days: -max(0, periodDaysBefore))
-        if let date = reminderDay.localDate(), let components = hourComponents(from: date, hour: 9) {
+        let today = CalendarDate(Date())
+        if reminderDay >= today,
+           let date = reminderDay.localDate(),
+           let components = hourComponents(from: date, hour: 9) {
             requests.append(makeRequest(
                 id: "period",
                 title: "Напоминание из LUNÉ",

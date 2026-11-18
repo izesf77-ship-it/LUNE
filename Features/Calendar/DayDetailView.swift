@@ -13,6 +13,9 @@ struct DayDetailView: View {
     @State private var showMucus = false
     @State private var showNoteEditor = false
     @State private var noteText = ""
+    @State private var showMedicationEditor = false
+    @State private var medicationName = ""
+    @State private var medicationDose = ""
 
     private let database = DatabaseManager.shared
 
@@ -37,6 +40,7 @@ struct DayDetailView: View {
         .sheet(isPresented: $showTemperature) { BasalTemperatureView() }
         .sheet(isPresented: $showMucus) { CervicalMucusView(day: day) }
         .sheet(isPresented: $showNoteEditor) { noteSheet }
+        .sheet(isPresented: $showMedicationEditor) { medicationSheet }
     }
 
     private var title: String {
@@ -205,15 +209,52 @@ struct DayDetailView: View {
     }
 
     private func addIntimacy() {
-        database.insert(IntimacyEntry(day: day))
-        appState.refresh()
-        appState.showToast("Запись сохранена")
+        // Повторное нажатие не создаёт копию записи за тот же день.
+        guard !database.records(IntimacyEntry.self, on: day).isEmpty else {
+            database.insert(IntimacyEntry(day: day))
+            appState.refresh()
+            appState.showToast("Запись сохранена")
+            return
+        }
+        appState.showToast("Запись за этот день уже есть")
     }
 
     private func addMedication() {
-        database.insert(MedicationEntry(day: day, name: "Записанное лекарство"))
-        appState.refresh()
-        appState.showToast("Запись сохранена")
+        medicationName = ""
+        medicationDose = ""
+        showMedicationEditor = true
+    }
+
+    private var medicationSheet: some View {
+        LuneBottomSheet(isPresented: $showMedicationEditor, title: "Лекарство") {
+            VStack(spacing: SpacingTokens.sm) {
+                LuneTextField(title: "Название", placeholder: "Что приняли?", text: $medicationName)
+                LuneTextField(title: "Доза", placeholder: "Необязательно", text: $medicationDose)
+                LunePrimaryButton(title: "Сохранить") {
+                    let name = medicationName.trimmingCharacters(in: .whitespacesAndNewlines)
+                    guard !name.isEmpty else { return }
+
+                    let duplicate = database.records(MedicationEntry.self, on: day).contains {
+                        $0.name.caseInsensitiveCompare(name) == .orderedSame
+                    }
+                    guard !duplicate else {
+                        appState.showToast("Такая запись уже есть")
+                        showMedicationEditor = false
+                        return
+                    }
+
+                    database.insert(MedicationEntry(
+                        day: day,
+                        name: name,
+                        dose: medicationDose.isEmpty ? nil : medicationDose
+                    ))
+                    database.save()
+                    appState.refresh()
+                    appState.showToast("Запись сохранена")
+                    showMedicationEditor = false
+                }
+            }
+        }
     }
 
     private func monthName(_ month: Int) -> String {

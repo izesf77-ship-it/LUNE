@@ -59,29 +59,32 @@
 		AA000000000000000000007C /* TestEditors.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000007B /* TestEditors.swift */; };
 		AA000000000000000000007E /* WellbeingView.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000007D /* WellbeingView.swift */; };
 		AA0000000000000000000080 /* MedicalLibraryView.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000007F /* MedicalLibraryView.swift */; };
-		AA0000000000000000000082 /* OnboardingFlow.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000081 /* OnboardingFlow.swift */; };
-		AA0000000000000000000084 /* OnboardingLateSteps.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000083 /* OnboardingLateSteps.swift */; };
-		AA0000000000000000000086 /* WelcomeView.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000085 /* WelcomeView.swift */; };
-		AA0000000000000000000088 /* FertilityInsightsView.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000087 /* FertilityInsightsView.swift */; };
-		AA000000000000000000008A /* PlanningExtras.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000089 /* PlanningExtras.swift */; };
-		AA000000000000000000008C /* RecommendationsView.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000008B /* RecommendationsView.swift */; };
-		AA000000000000000000008E /* ReportsView.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000008D /* ReportsView.swift */; };
-		AA0000000000000000000090 /* AboutView.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000008F /* AboutView.swift */; };
-		AA0000000000000000000092 /* BackupSettingsView.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000091 /* BackupSettingsView.swift */; };
-		AA0000000000000000000094 /* ModeSwitcherView.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000093 /* ModeSwitcherView.swift */; };
-		AA0000000000000000000096 /* NotificationSettingsView.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000095 /* NotificationSettingsView.swift */; };
-		AA0000000000000000000098 /* PrivacySettingsView.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000097 /* PrivacySettingsView.swift */; };
-		AA000000000000000000009A /* SettingsView.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000099 /* SettingsView.swift */; };
-		AA000000000000000000009C /* LUNEApp.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000009B /* LUNEApp.swift */; };
-		AA000000000000000000009E /* MedicalKnowledge.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000009D /* MedicalKnowledge.swift */; };
-		AA00000000000000000000A0 /* PersistenceIntegrationTests.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000009F /* PersistenceIntegrationTests.swift */; };
-		AA00000000000000000000A2 /* BackupAndCryptoTests.swift in build */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000A1 /* BackupAndCryptoTests.swift */; };
-		AA00000000000000000000A4 /* CyclePredictionTests.swift in build */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000A3 /* CyclePredictionTests.swift */; };
-		AA00000000000000000000A6 /* FertilityAndSafetyTests.swift in build */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000A5 /* FertilityAndSafetyTests.swift */; };
-		AA00000000000000000000A8 /* RecommendationTests.swift in build */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000A7 /* RecommendationTests.swift */; };
-		AA00000000000000000000AA /* Assets.xcassets in build */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000A9 /* Assets.xcassets */; };
-		AA00000000000000000000AC /* Localizable.xcstrings in build */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000AB /* Localizable.xcstrings */; };
-		AA00000000000000000000AE /* Info.plist in build */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000AD /* Info.plist */; };
+		AA0000000000000000000082 /* OnboardingDataNormalizer.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000081 /* OnboardingDataNormalizer.swift */; };
+		AA0000000000000000000084 /* OnboardingFlow.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000083 /* OnboardingFlow.swift */; };
+		AA0000000000000000000086 /* OnboardingLateSteps.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000085 /* OnboardingLateSteps.swift */; };
+		AA0000000000000000000088 /* WelcomeView.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000087 /* WelcomeView.swift */; };
+		AA000000000000000000008A /* FertilityInsightsView.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000089 /* FertilityInsightsView.swift */; };
+		AA000000000000000000008C /* PlanningExtras.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000008B /* PlanningExtras.swift */; };
+		AA000000000000000000008E /* RecommendationsView.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000008D /* RecommendationsView.swift */; };
+		AA0000000000000000000090 /* ReportsView.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000008F /* ReportsView.swift */; };
+		AA0000000000000000000092 /* AboutView.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000091 /* AboutView.swift */; };
+		AA0000000000000000000094 /* BackupSettingsView.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000093 /* BackupSettingsView.swift */; };
+		AA0000000000000000000096 /* LoveLetterView.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000095 /* LoveLetterView.swift */; };
+		AA0000000000000000000098 /* ModeSwitcherView.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000097 /* ModeSwitcherView.swift */; };
+		AA000000000000000000009A /* NotificationSettingsView.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000099 /* NotificationSettingsView.swift */; };
+		AA000000000000000000009C /* PrivacySettingsView.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000009B /* PrivacySettingsView.swift */; };
+		AA000000000000000000009E /* SettingsView.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000009D /* SettingsView.swift */; };
+		AA00000000000000000000A0 /* LUNEApp.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000009F /* LUNEApp.swift */; };
+		AA00000000000000000000A2 /* MedicalKnowledge.swift in build */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000A1 /* MedicalKnowledge.swift */; };
+		AA00000000000000000000A4 /* PersistenceIntegrationTests.swift in build */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000A3 /* PersistenceIntegrationTests.swift */; };
+		AA00000000000000000000A6 /* BackupAndCryptoTests.swift in build */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000A5 /* BackupAndCryptoTests.swift */; };
+		AA00000000000000000000A8 /* CyclePredictionTests.swift in build */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000A7 /* CyclePredictionTests.swift */; };
+		AA00000000000000000000AA /* FertilityAndSafetyTests.swift in build */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000A9 /* FertilityAndSafetyTests.swift */; };
+		AA00000000000000000000AC /* OnboardingTests.swift in build */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000AB /* OnboardingTests.swift */; };
+		AA00000000000000000000AE /* RecommendationTests.swift in build */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000AD /* RecommendationTests.swift */; };
+		AA00000000000000000000B0 /* Assets.xcassets in build */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000AF /* Assets.xcassets */; };
+		AA00000000000000000000B2 /* Localizable.xcstrings in build */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000B1 /* Localizable.xcstrings */; };
+		AA00000000000000000000B4 /* Info.plist in build */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000B3 /* Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -149,29 +152,32 @@
 		AA000000000000000000007B /* TestEditors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TestEditors.swift"; sourceTree = "<group>"; };
 		AA000000000000000000007D /* WellbeingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WellbeingView.swift"; sourceTree = "<group>"; };
 		AA000000000000000000007F /* MedicalLibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MedicalLibraryView.swift"; sourceTree = "<group>"; };
-		AA0000000000000000000081 /* OnboardingFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnboardingFlow.swift"; sourceTree = "<group>"; };
-		AA0000000000000000000083 /* OnboardingLateSteps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnboardingLateSteps.swift"; sourceTree = "<group>"; };
-		AA0000000000000000000085 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WelcomeView.swift"; sourceTree = "<group>"; };
-		AA0000000000000000000087 /* FertilityInsightsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FertilityInsightsView.swift"; sourceTree = "<group>"; };
-		AA0000000000000000000089 /* PlanningExtras.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlanningExtras.swift"; sourceTree = "<group>"; };
-		AA000000000000000000008B /* RecommendationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecommendationsView.swift"; sourceTree = "<group>"; };
-		AA000000000000000000008D /* ReportsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReportsView.swift"; sourceTree = "<group>"; };
-		AA000000000000000000008F /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AboutView.swift"; sourceTree = "<group>"; };
-		AA0000000000000000000091 /* BackupSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BackupSettingsView.swift"; sourceTree = "<group>"; };
-		AA0000000000000000000093 /* ModeSwitcherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ModeSwitcherView.swift"; sourceTree = "<group>"; };
-		AA0000000000000000000095 /* NotificationSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationSettingsView.swift"; sourceTree = "<group>"; };
-		AA0000000000000000000097 /* PrivacySettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrivacySettingsView.swift"; sourceTree = "<group>"; };
-		AA0000000000000000000099 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsView.swift"; sourceTree = "<group>"; };
-		AA000000000000000000009B /* LUNEApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LUNEApp.swift"; sourceTree = "<group>"; };
-		AA000000000000000000009D /* MedicalKnowledge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MedicalKnowledge.swift"; sourceTree = "<group>"; };
-		AA000000000000000000009F /* PersistenceIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PersistenceIntegrationTests.swift"; sourceTree = "<group>"; };
-		AA00000000000000000000A1 /* BackupAndCryptoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BackupAndCryptoTests.swift"; sourceTree = "<group>"; };
-		AA00000000000000000000A3 /* CyclePredictionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CyclePredictionTests.swift"; sourceTree = "<group>"; };
-		AA00000000000000000000A5 /* FertilityAndSafetyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FertilityAndSafetyTests.swift"; sourceTree = "<group>"; };
-		AA00000000000000000000A7 /* RecommendationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecommendationTests.swift"; sourceTree = "<group>"; };
-		AA00000000000000000000A9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Assets.xcassets"; sourceTree = "<group>"; };
-		AA00000000000000000000AB /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = "Localizable.xcstrings"; sourceTree = "<group>"; };
-		AA00000000000000000000AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info.plist"; sourceTree = "<group>"; };
+		AA0000000000000000000081 /* OnboardingDataNormalizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnboardingDataNormalizer.swift"; sourceTree = "<group>"; };
+		AA0000000000000000000083 /* OnboardingFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnboardingFlow.swift"; sourceTree = "<group>"; };
+		AA0000000000000000000085 /* OnboardingLateSteps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnboardingLateSteps.swift"; sourceTree = "<group>"; };
+		AA0000000000000000000087 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WelcomeView.swift"; sourceTree = "<group>"; };
+		AA0000000000000000000089 /* FertilityInsightsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FertilityInsightsView.swift"; sourceTree = "<group>"; };
+		AA000000000000000000008B /* PlanningExtras.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlanningExtras.swift"; sourceTree = "<group>"; };
+		AA000000000000000000008D /* RecommendationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecommendationsView.swift"; sourceTree = "<group>"; };
+		AA000000000000000000008F /* ReportsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReportsView.swift"; sourceTree = "<group>"; };
+		AA0000000000000000000091 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AboutView.swift"; sourceTree = "<group>"; };
+		AA0000000000000000000093 /* BackupSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BackupSettingsView.swift"; sourceTree = "<group>"; };
+		AA0000000000000000000095 /* LoveLetterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoveLetterView.swift"; sourceTree = "<group>"; };
+		AA0000000000000000000097 /* ModeSwitcherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ModeSwitcherView.swift"; sourceTree = "<group>"; };
+		AA0000000000000000000099 /* NotificationSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationSettingsView.swift"; sourceTree = "<group>"; };
+		AA000000000000000000009B /* PrivacySettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrivacySettingsView.swift"; sourceTree = "<group>"; };
+		AA000000000000000000009D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsView.swift"; sourceTree = "<group>"; };
+		AA000000000000000000009F /* LUNEApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LUNEApp.swift"; sourceTree = "<group>"; };
+		AA00000000000000000000A1 /* MedicalKnowledge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MedicalKnowledge.swift"; sourceTree = "<group>"; };
+		AA00000000000000000000A3 /* PersistenceIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PersistenceIntegrationTests.swift"; sourceTree = "<group>"; };
+		AA00000000000000000000A5 /* BackupAndCryptoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BackupAndCryptoTests.swift"; sourceTree = "<group>"; };
+		AA00000000000000000000A7 /* CyclePredictionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CyclePredictionTests.swift"; sourceTree = "<group>"; };
+		AA00000000000000000000A9 /* FertilityAndSafetyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FertilityAndSafetyTests.swift"; sourceTree = "<group>"; };
+		AA00000000000000000000AB /* OnboardingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnboardingTests.swift"; sourceTree = "<group>"; };
+		AA00000000000000000000AD /* RecommendationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecommendationTests.swift"; sourceTree = "<group>"; };
+		AA00000000000000000000AF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Assets.xcassets"; sourceTree = "<group>"; };
+		AA00000000000000000000B1 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = "Localizable.xcstrings"; sourceTree = "<group>"; };
+		AA00000000000000000000B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,27 +201,27 @@
 		AA0000000000000000000002 = {
 			isa = PBXGroup;
 			children = (
-				AA00000000000000000000CE /* App sources */,
-				AA00000000000000000000CF /* Tests */,
-				AA00000000000000000000D0 /* Resources */,
-				AA00000000000000000000AD /* Info.plist */,
+				AA00000000000000000000D4 /* App sources */,
+				AA00000000000000000000D5 /* Tests */,
+				AA00000000000000000000D6 /* Resources */,
+				AA00000000000000000000B3 /* Info.plist */,
 				AA0000000000000000000003 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000CE /* App sources */ = {
+		AA00000000000000000000D4 /* App sources */ = {
 			isa = PBXGroup;
 			children = (
-				AA000000000000000000009B /* LUNEApp.swift */,
+				AA000000000000000000009F /* LUNEApp.swift */,
 				AA000000000000000000001F /* ContentView.swift */,
-				AA00000000000000000000AF /* App */,
-				AA00000000000000000000B0 /* Core */,
-				AA00000000000000000000BC /* Features */,
-				AA00000000000000000000C7 /* Resources */,
+				AA00000000000000000000B5 /* App */,
+				AA00000000000000000000B6 /* Core */,
+				AA00000000000000000000C2 /* Features */,
+				AA00000000000000000000CD /* Resources */,
 			);
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000AF /* App */ = {
+		AA00000000000000000000B5 /* App */ = {
 			isa = PBXGroup;
 			children = (
 				AA0000000000000000000019 /* AppLockView.swift */,
@@ -225,24 +231,24 @@
 			path = "App";
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000B0 /* Core */ = {
+		AA00000000000000000000B6 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				AA00000000000000000000B1 /* Backup */,
-				AA00000000000000000000B2 /* Database */,
-				AA00000000000000000000B3 /* DesignSystem */,
-				AA00000000000000000000B5 /* Extensions */,
-				AA00000000000000000000B6 /* Models */,
-				AA00000000000000000000B7 /* Notifications */,
-				AA00000000000000000000B8 /* Predictions */,
-				AA00000000000000000000B9 /* Recommendations */,
-				AA00000000000000000000BA /* Reports */,
-				AA00000000000000000000BB /* Security */,
+				AA00000000000000000000B7 /* Backup */,
+				AA00000000000000000000B8 /* Database */,
+				AA00000000000000000000B9 /* DesignSystem */,
+				AA00000000000000000000BB /* Extensions */,
+				AA00000000000000000000BC /* Models */,
+				AA00000000000000000000BD /* Notifications */,
+				AA00000000000000000000BE /* Predictions */,
+				AA00000000000000000000BF /* Recommendations */,
+				AA00000000000000000000C0 /* Reports */,
+				AA00000000000000000000C1 /* Security */,
 			);
 			path = "Core";
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000B1 /* Backup */ = {
+		AA00000000000000000000B7 /* Backup */ = {
 			isa = PBXGroup;
 			children = (
 				AA0000000000000000000021 /* BackupService.swift */,
@@ -250,7 +256,7 @@
 			path = "Backup";
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000B2 /* Database */ = {
+		AA00000000000000000000B8 /* Database */ = {
 			isa = PBXGroup;
 			children = (
 				AA0000000000000000000023 /* DatabaseManager.swift */,
@@ -258,12 +264,12 @@
 			path = "Database";
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000B3 /* DesignSystem */ = {
+		AA00000000000000000000B9 /* DesignSystem */ = {
 			isa = PBXGroup;
 			children = (
 				AA0000000000000000000025 /* AnimationTokens.swift */,
 				AA0000000000000000000027 /* ColorTokens.swift */,
-				AA00000000000000000000B4 /* Components */,
+				AA00000000000000000000BA /* Components */,
 				AA000000000000000000003B /* RadiusTokens.swift */,
 				AA000000000000000000003D /* ShadowTokens.swift */,
 				AA000000000000000000003F /* SpacingTokens.swift */,
@@ -272,7 +278,7 @@
 			path = "DesignSystem";
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000B4 /* Components */ = {
+		AA00000000000000000000BA /* Components */ = {
 			isa = PBXGroup;
 			children = (
 				AA0000000000000000000029 /* ComponentCatalogView.swift */,
@@ -288,7 +294,7 @@
 			path = "Components";
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000B5 /* Extensions */ = {
+		AA00000000000000000000BB /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				AA0000000000000000000043 /* CalendarDate.swift */,
@@ -296,7 +302,7 @@
 			path = "Extensions";
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000B6 /* Models */ = {
+		AA00000000000000000000BC /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				AA0000000000000000000045 /* AppMode.swift */,
@@ -309,7 +315,7 @@
 			path = "Models";
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000B7 /* Notifications */ = {
+		AA00000000000000000000BD /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
 				AA0000000000000000000051 /* NotificationService.swift */,
@@ -317,7 +323,7 @@
 			path = "Notifications";
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000B8 /* Predictions */ = {
+		AA00000000000000000000BE /* Predictions */ = {
 			isa = PBXGroup;
 			children = (
 				AA0000000000000000000053 /* CyclePredictionEngine.swift */,
@@ -326,7 +332,7 @@
 			path = "Predictions";
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000B9 /* Recommendations */ = {
+		AA00000000000000000000BF /* Recommendations */ = {
 			isa = PBXGroup;
 			children = (
 				AA0000000000000000000057 /* RecommendationEngine.swift */,
@@ -334,7 +340,7 @@
 			path = "Recommendations";
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000BA /* Reports */ = {
+		AA00000000000000000000C0 /* Reports */ = {
 			isa = PBXGroup;
 			children = (
 				AA0000000000000000000059 /* PDFReportService.swift */,
@@ -342,7 +348,7 @@
 			path = "Reports";
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000BB /* Security */ = {
+		AA00000000000000000000C1 /* Security */ = {
 			isa = PBXGroup;
 			children = (
 				AA000000000000000000005B /* BiometricAuth.swift */,
@@ -352,24 +358,24 @@
 			path = "Security";
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000BC /* Features */ = {
+		AA00000000000000000000C2 /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				AA00000000000000000000BD /* Analytics */,
-				AA00000000000000000000BE /* Calendar */,
-				AA00000000000000000000BF /* Home */,
-				AA00000000000000000000C0 /* Journal */,
-				AA00000000000000000000C1 /* Knowledge */,
-				AA00000000000000000000C2 /* Onboarding */,
-				AA00000000000000000000C3 /* Planning */,
-				AA00000000000000000000C4 /* Recommendations */,
-				AA00000000000000000000C5 /* Reports */,
-				AA00000000000000000000C6 /* Settings */,
+				AA00000000000000000000C3 /* Analytics */,
+				AA00000000000000000000C4 /* Calendar */,
+				AA00000000000000000000C5 /* Home */,
+				AA00000000000000000000C6 /* Journal */,
+				AA00000000000000000000C7 /* Knowledge */,
+				AA00000000000000000000C8 /* Onboarding */,
+				AA00000000000000000000C9 /* Planning */,
+				AA00000000000000000000CA /* Recommendations */,
+				AA00000000000000000000CB /* Reports */,
+				AA00000000000000000000CC /* Settings */,
 			);
 			path = "Features";
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000BD /* Analytics */ = {
+		AA00000000000000000000C3 /* Analytics */ = {
 			isa = PBXGroup;
 			children = (
 				AA0000000000000000000061 /* AnalyticsView.swift */,
@@ -378,7 +384,7 @@
 			path = "Analytics";
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000BE /* Calendar */ = {
+		AA00000000000000000000C4 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
 				AA0000000000000000000065 /* CalendarView.swift */,
@@ -388,7 +394,7 @@
 			path = "Calendar";
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000BF /* Home */ = {
+		AA00000000000000000000C5 /* Home */ = {
 			isa = PBXGroup;
 			children = (
 				AA000000000000000000006B /* CycleHomeView.swift */,
@@ -398,7 +404,7 @@
 			path = "Home";
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000C0 /* Journal */ = {
+		AA00000000000000000000C6 /* Journal */ = {
 			isa = PBXGroup;
 			children = (
 				AA0000000000000000000071 /* BasalTemperatureView.swift */,
@@ -412,7 +418,7 @@
 			path = "Journal";
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000C1 /* Knowledge */ = {
+		AA00000000000000000000C7 /* Knowledge */ = {
 			isa = PBXGroup;
 			children = (
 				AA000000000000000000007F /* MedicalLibraryView.swift */,
@@ -420,119 +426,122 @@
 			path = "Knowledge";
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000C2 /* Onboarding */ = {
+		AA00000000000000000000C8 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				AA0000000000000000000081 /* OnboardingFlow.swift */,
-				AA0000000000000000000083 /* OnboardingLateSteps.swift */,
-				AA0000000000000000000085 /* WelcomeView.swift */,
+				AA0000000000000000000081 /* OnboardingDataNormalizer.swift */,
+				AA0000000000000000000083 /* OnboardingFlow.swift */,
+				AA0000000000000000000085 /* OnboardingLateSteps.swift */,
+				AA0000000000000000000087 /* WelcomeView.swift */,
 			);
 			path = "Onboarding";
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000C3 /* Planning */ = {
+		AA00000000000000000000C9 /* Planning */ = {
 			isa = PBXGroup;
 			children = (
-				AA0000000000000000000087 /* FertilityInsightsView.swift */,
-				AA0000000000000000000089 /* PlanningExtras.swift */,
+				AA0000000000000000000089 /* FertilityInsightsView.swift */,
+				AA000000000000000000008B /* PlanningExtras.swift */,
 			);
 			path = "Planning";
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000C4 /* Recommendations */ = {
+		AA00000000000000000000CA /* Recommendations */ = {
 			isa = PBXGroup;
 			children = (
-				AA000000000000000000008B /* RecommendationsView.swift */,
+				AA000000000000000000008D /* RecommendationsView.swift */,
 			);
 			path = "Recommendations";
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000C5 /* Reports */ = {
+		AA00000000000000000000CB /* Reports */ = {
 			isa = PBXGroup;
 			children = (
-				AA000000000000000000008D /* ReportsView.swift */,
+				AA000000000000000000008F /* ReportsView.swift */,
 			);
 			path = "Reports";
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000C6 /* Settings */ = {
+		AA00000000000000000000CC /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				AA000000000000000000008F /* AboutView.swift */,
-				AA0000000000000000000091 /* BackupSettingsView.swift */,
-				AA0000000000000000000093 /* ModeSwitcherView.swift */,
-				AA0000000000000000000095 /* NotificationSettingsView.swift */,
-				AA0000000000000000000097 /* PrivacySettingsView.swift */,
-				AA0000000000000000000099 /* SettingsView.swift */,
+				AA0000000000000000000091 /* AboutView.swift */,
+				AA0000000000000000000093 /* BackupSettingsView.swift */,
+				AA0000000000000000000095 /* LoveLetterView.swift */,
+				AA0000000000000000000097 /* ModeSwitcherView.swift */,
+				AA0000000000000000000099 /* NotificationSettingsView.swift */,
+				AA000000000000000000009B /* PrivacySettingsView.swift */,
+				AA000000000000000000009D /* SettingsView.swift */,
 			);
 			path = "Settings";
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000C7 /* Resources */ = {
+		AA00000000000000000000CD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				AA00000000000000000000C8 /* MedicalKnowledge */,
+				AA00000000000000000000CE /* MedicalKnowledge */,
 			);
 			path = "Resources";
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000C8 /* MedicalKnowledge */ = {
+		AA00000000000000000000CE /* MedicalKnowledge */ = {
 			isa = PBXGroup;
 			children = (
-				AA000000000000000000009D /* MedicalKnowledge.swift */,
+				AA00000000000000000000A1 /* MedicalKnowledge.swift */,
 			);
 			path = "MedicalKnowledge";
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000CF /* Tests */ = {
+		AA00000000000000000000D5 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				AA00000000000000000000C9 /* Integration */,
-				AA00000000000000000000CA /* Unit */,
+				AA00000000000000000000CF /* Integration */,
+				AA00000000000000000000D0 /* Unit */,
 			);
 			path = "Tests";
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000C9 /* Integration */ = {
+		AA00000000000000000000CF /* Integration */ = {
 			isa = PBXGroup;
 			children = (
-				AA000000000000000000009F /* PersistenceIntegrationTests.swift */,
+				AA00000000000000000000A3 /* PersistenceIntegrationTests.swift */,
 			);
 			path = "Integration";
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000CA /* Unit */ = {
+		AA00000000000000000000D0 /* Unit */ = {
 			isa = PBXGroup;
 			children = (
-				AA00000000000000000000A1 /* BackupAndCryptoTests.swift */,
-				AA00000000000000000000A3 /* CyclePredictionTests.swift */,
-				AA00000000000000000000A5 /* FertilityAndSafetyTests.swift */,
-				AA00000000000000000000A7 /* RecommendationTests.swift */,
+				AA00000000000000000000A5 /* BackupAndCryptoTests.swift */,
+				AA00000000000000000000A7 /* CyclePredictionTests.swift */,
+				AA00000000000000000000A9 /* FertilityAndSafetyTests.swift */,
+				AA00000000000000000000AB /* OnboardingTests.swift */,
+				AA00000000000000000000AD /* RecommendationTests.swift */,
 			);
 			path = "Unit";
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000D0 /* Resources */ = {
+		AA00000000000000000000D6 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				AA00000000000000000000CB /* Assets */,
-				AA00000000000000000000CC /* Localizations */,
+				AA00000000000000000000D1 /* Assets */,
+				AA00000000000000000000D2 /* Localizations */,
 			);
 			path = "Resources";
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000CB /* Assets */ = {
+		AA00000000000000000000D1 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				AA00000000000000000000A9 /* Assets.xcassets */,
+				AA00000000000000000000AF /* Assets.xcassets */,
 			);
 			path = "Assets";
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000CC /* Localizations */ = {
+		AA00000000000000000000D2 /* Localizations */ = {
 			isa = PBXGroup;
 			children = (
-				AA00000000000000000000AB /* Localizable.xcstrings */,
+				AA00000000000000000000B1 /* Localizable.xcstrings */,
 			);
 			path = "Localizations";
 			sourceTree = "<group>";
@@ -628,8 +637,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA00000000000000000000AA /* resource */,
-				AA00000000000000000000AC /* resource */,
+				AA00000000000000000000B0 /* resource */,
+				AA00000000000000000000B2 /* resource */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -714,6 +723,8 @@
 				AA000000000000000000009A /* source */,
 				AA000000000000000000009C /* source */,
 				AA000000000000000000009E /* source */,
+				AA00000000000000000000A0 /* source */,
+				AA00000000000000000000A2 /* source */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -721,11 +732,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA00000000000000000000A0 /* test source */,
-				AA00000000000000000000A2 /* test source */,
 				AA00000000000000000000A4 /* test source */,
 				AA00000000000000000000A6 /* test source */,
 				AA00000000000000000000A8 /* test source */,
+				AA00000000000000000000AA /* test source */,
+				AA00000000000000000000AC /* test source */,
+				AA00000000000000000000AE /* test source */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -40,26 +40,37 @@ struct LuneDatePicker: View {
     let title: String
     @Binding var date: Date
     var displayedComponents: DatePickerComponents = [.date]
+    /// Верхняя граница — обычно сегодня. Защищает от случайных будущих дат.
+    var maximumDate: Date?
 
     var body: some View {
         VStack(alignment: .leading, spacing: SpacingTokens.xxs) {
             Text(title)
-                .font(TypographyTokens.labelMedium)
+                .font(TypographyTokens.Dynamic.bodyMedium)
                 .foregroundStyle(ColorTokens.textPrimary)
 
-            DatePicker("", selection: $date, displayedComponents: displayedComponents)
-                .datePickerStyle(.compact)
-                .labelsHidden()
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.horizontal, SpacingTokens.sm)
-                .frame(height: SpacingTokens.textFieldHeight)
-                .background(ColorTokens.surface)
-                .clipShape(RoundedRectangle(cornerRadius: RadiusTokens.sm))
-                .overlay(
-                    RoundedRectangle(cornerRadius: RadiusTokens.sm)
-                        .stroke(ColorTokens.separator, lineWidth: 1)
-                )
-                .accessibilityLabel(title)
+            Group {
+                if let maximumDate {
+                    DatePicker("", selection: $date, in: ...maximumDate, displayedComponents: displayedComponents)
+                } else {
+                    DatePicker("", selection: $date, displayedComponents: displayedComponents)
+                }
+            }
+            .datePickerStyle(.compact)
+            .labelsHidden()
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.horizontal, SpacingTokens.sm)
+            .frame(height: SpacingTokens.textFieldHeight)
+            .background(ColorTokens.surface)
+            .clipShape(RoundedRectangle(cornerRadius: RadiusTokens.sm))
+            .overlay(
+                RoundedRectangle(cornerRadius: RadiusTokens.sm)
+                    .stroke(ColorTokens.separator, lineWidth: 1)
+            )
+            .accessibilityLabel(title)
+            .onChange(of: date) { _, newValue in
+                if let maximumDate, newValue > maximumDate { date = maximumDate }
+            }
         }
     }
 }
