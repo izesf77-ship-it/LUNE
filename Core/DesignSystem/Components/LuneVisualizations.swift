@@ -189,7 +189,7 @@ struct FlowLayout: Layout {
 
     func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) -> CGSize {
         let rows = arrangeRows(proposal: proposal, subviews: subviews)
-        let width = rows.map(\.totalWidth).max() ?? 0
+        let width = rows.map { $0.totalWidth(spacing: spacing) }.max() ?? 0
         let height = rows.reduce(0) { $0 + $1.rowHeight } + spacing * CGFloat(max(rows.count - 1, 0))
         return CGSize(width: width, height: height)
     }
@@ -211,7 +211,7 @@ struct FlowLayout: Layout {
 
     private struct Row {
         var items: [(view: LayoutSubviews.Element, width: CGFloat, height: CGFloat)]
-        var totalWidth: CGFloat {
+        func totalWidth(spacing: CGFloat) -> CGFloat {
             var widths: CGFloat = 0
             for item in items { widths += item.width }
             let gaps = max(items.count - 1, 0)
@@ -232,7 +232,8 @@ struct FlowLayout: Layout {
 
         for view in subviews {
             let size = view.sizeThatFits(.unspecified)
-            let candidate = current.totalWidth + (current.items.isEmpty ? 0 : spacing) + size.width
+            let candidate = current.totalWidth(spacing: spacing)
+                + (current.items.isEmpty ? 0 : spacing) + size.width
             if candidate > maxWidth && !current.items.isEmpty {
                 rows.append(current)
                 current = Row(items: [])

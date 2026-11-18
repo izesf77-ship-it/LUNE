@@ -133,19 +133,19 @@ struct JournalView: View {
     private var recentHistory: some View {
         let allSymptoms = database.all(DailySymptomEntry.self)
         let sorted = Dictionary(grouping: allSymptoms, by: \.symptom)
-            .map { ($0.key.displayName, $0.value.count) }
-            .sorted { $0.1 > $1.1 }
+            .map { SymptomFrequency(name: $0.key.displayName, count: $0.value.count) }
+            .sorted { $0.count > $1.count }
 
         return Group {
             if !sorted.isEmpty {
                 VStack(alignment: .leading, spacing: SpacingTokens.xs) {
                     LuneSectionHeader(title: "Частые симптомы", subtitle: "По всем записям")
                     LuneCard {
-                        ForEach(sorted.prefix(5), id: \.0) { item in
+                        ForEach(sorted.prefix(5)) { item in
                             HStack {
-                                Text(item.0).font(TypographyTokens.bodyMedium)
+                                Text(item.name).font(TypographyTokens.bodyMedium)
                                 Spacer()
-                                Text("\(item.1)")
+                                Text("\(item.count)")
                                     .font(TypographyTokens.labelMedium)
                                     .foregroundStyle(ColorTokens.roseDeep)
                             }
@@ -172,6 +172,12 @@ struct JournalView: View {
             }
         }
     }
+}
+
+private struct SymptomFrequency: Identifiable {
+    let name: String
+    let count: Int
+    var id: String { name }
 }
 
 struct Metric: View {
