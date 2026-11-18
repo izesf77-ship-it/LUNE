@@ -68,3 +68,7 @@ Temporary Items
 *.sqlite
 *.sqlite-shm
 *.sqlite-wal
+
+# CI debug logs
+*_log.txt
+*_err.txt
