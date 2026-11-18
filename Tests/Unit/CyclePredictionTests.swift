@@ -114,9 +114,9 @@ final class CyclePredictionTests: XCTestCase {
         let date = utc.date(from: "2026-11-18T23:30:00Z")!
 
         var tokyo = Calendar(identifier: .gregorian)
-        tokyo.timeZone = TimeZone(secondsFromGMT: 9 * 3600)
+        tokyo.timeZone = TimeZone(secondsFromGMT: 9 * 3600)!
         var la = Calendar(identifier: .gregorian)
-        la.timeZone = TimeZone(secondsFromGMT: -8 * 3600)
+        la.timeZone = TimeZone(secondsFromGMT: -8 * 3600)!
 
         let inTokyo = CalendarDate(date, calendar: tokyo)
         let inLA = CalendarDate(date, calendar: la)
