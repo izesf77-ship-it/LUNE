@@ -1,76 +1,60 @@
 import SwiftUI
 
+/// Первый экран после splash. Вежливо знакомит с продуктом и приватностью.
 struct WelcomeView: View {
-    
-    @EnvironmentObject var appState: AppState
     @State private var showOnboarding = false
-    
+
     var body: some View {
         ZStack {
-            ColorTokens.background
-                .ignoresSafeArea()
-            
-            VStack(spacing: SpacingTokens.xxl) {
-                Spacer()
-                
-                // Иконка
-                Circle()
-                    .fill(
-                        LinearGradient(
-                            colors: [
-                                ColorTokens.rosePrimary.opacity(0.8),
-                                ColorTokens.blush
-                            ],
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
+            ColorTokens.background.ignoresSafeArea()
+
+            VStack(spacing: SpacingTokens.lg) {
+                Spacer(minLength: SpacingTokens.xl)
+
+                ZStack {
+                    Circle()
+                        .fill(
+                            LinearGradient(
+                                colors: [ColorTokens.rosePrimary, ColorTokens.blush],
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing
+                            )
                         )
-                    )
-                    .frame(width: 120, height: 120)
-                    .overlay(
-                        Image(systemName: "heart.fill")
-                            .font(.system(size: 60))
-                            .foregroundStyle(.white)
-                    )
-                    .luneElevatedShadow()
-                
+                    Image(systemName: "sparkles")
+                        .font(.system(size: 54))
+                        .foregroundStyle(.white)
+                }
+                .frame(width: 118, height: 118)
+                .shadow(color: Color.black.opacity(0.06), radius: 16, y: 6)
+
                 VStack(spacing: SpacingTokens.sm) {
                     Text("Добро пожаловать в LUNÉ")
-                        .luneDisplayLarge()
+                        .font(TypographyTokens.displayLarge)
+                        .foregroundStyle(ColorTokens.textPrimary)
                         .multilineTextAlignment(.center)
-                    
-                    Text("Отслеживайте цикл, планируйте беременность и заботьтесь о своём здоровье")
-                        .luneBodyMedium()
+
+                    Text("Место, где можно спокойно наблюдать за циклом, самочувствием и планами — без аккаунта и подключения к интернету.")
+                        .font(TypographyTokens.bodyLarge)
+                        .foregroundStyle(ColorTokens.textSecondary)
                         .multilineTextAlignment(.center)
-                        .padding(.horizontal, SpacingTokens.xl)
                 }
-                
+                .padding(.horizontal, SpacingTokens.md)
+
                 Spacer()
-                
-                // Приватность
-                VStack(spacing: SpacingTokens.xs) {
-                    HStack(spacing: SpacingTokens.xxs) {
-                        Image(systemName: "lock.shield.fill")
-                            .foregroundStyle(ColorTokens.rosePrimary)
-                        
-                        Text("Полная приватность")
-                            .font(TypographyTokens.labelMedium)
-                            .foregroundStyle(ColorTokens.textPrimary)
-                    }
-                    
-                    Text("Все ваши данные хранятся только на этом iPhone")
-                        .luneCaption()
-                        .multilineTextAlignment(.center)
+
+                HStack(spacing: SpacingTokens.xxs) {
+                    Image(systemName: "lock.shield.fill")
+                        .foregroundStyle(ColorTokens.roseDeep)
+                    Text("Все данные хранятся только на этом iPhone")
+                        .font(TypographyTokens.bodySmall)
+                        .foregroundStyle(ColorTokens.textSecondary)
                 }
-                .padding(.horizontal, SpacingTokens.xl)
-                
-                // Кнопка
-                LunePrimaryButton(
-                    title: "Начать",
-                    action: {
-                        AnimationTokens.hapticMedium()
-                        showOnboarding = true
-                    }
-                )
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, SpacingTokens.md)
+
+                LunePrimaryButton(title: "Начать", icon: "arrow.right") {
+                    showOnboarding = true
+                }
                 .padding(.horizontal, SpacingTokens.screenHorizontal)
                 .padding(.bottom, SpacingTokens.md)
             }

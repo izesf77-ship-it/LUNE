@@ -1,68 +1,80 @@
 import Foundation
 import SwiftData
 
-/// Профиль пользователя
+/// Единый профиль пользователя для обоих режимов.
 @Model
 final class UserProfile {
-    
     @Attribute(.unique) var id: UUID
     var createdAt: Date
     var updatedAt: Date
-    
-    // Основные настройки
-    var currentMode: String // AppMode raw value
+
+    var currentModeRaw: String
     var hasCompletedOnboarding: Bool
-    
-    // Персонализация
+    var onboardingVersion: Int
+
     var userName: String?
-    
-    // Цикл
-    var typicalCycleLength: Int? // Обычная длина цикла (дни)
-    var typicalPeriodDuration: Int? // Обычная длительность месячных (дни)
-    
-    // Fertility tracking
+    var typicalCycleLength: Int?
+    var typicalPeriodDuration: Int?
+
     var trackingBasalTemperature: Bool
     var trackingCervicalMucus: Bool
     var trackingLHTests: Bool
-    
-    // Приватность
+    var trackingIntimacy: Bool
+
     var faceIDEnabled: Bool
     var hideNotificationPreviews: Bool
-    
-    // Уведомления
+    var hideSensitiveOnHome: Bool
+
     var notificationsEnabled: Bool
     var periodReminderDaysBefore: Int
-    var dailyLogReminderTime: Date?
-    
+    var symptomReminderEnabled: Bool
+    var symptomReminderHour: Int
+    var lhTestReminderEnabled: Bool
+    var lhTestReminderHour: Int
+    var pregnancyTestReminderEnabled: Bool
+    var pregnancyTestReminderHour: Int
+
     init(
         id: UUID = UUID(),
         currentMode: AppMode = .cycleTracking,
         hasCompletedOnboarding: Bool = false
     ) {
         self.id = id
-        self.createdAt = Date()
-        self.updatedAt = Date()
-        self.currentMode = currentMode.rawValue
+        let now = Date()
+        self.createdAt = now
+        self.updatedAt = now
+        self.currentModeRaw = currentMode.rawValue
         self.hasCompletedOnboarding = hasCompletedOnboarding
+        self.onboardingVersion = 1
         self.userName = nil
         self.typicalCycleLength = nil
         self.typicalPeriodDuration = nil
         self.trackingBasalTemperature = false
         self.trackingCervicalMucus = false
         self.trackingLHTests = false
+        self.trackingIntimacy = false
         self.faceIDEnabled = false
         self.hideNotificationPreviews = true
+        self.hideSensitiveOnHome = true
         self.notificationsEnabled = false
         self.periodReminderDaysBefore = 2
-        self.dailyLogReminderTime = nil
+        self.symptomReminderEnabled = false
+        self.symptomReminderHour = 20
+        self.lhTestReminderEnabled = false
+        self.lhTestReminderHour = 9
+        self.pregnancyTestReminderEnabled = false
+        self.pregnancyTestReminderHour = 9
     }
-    
+
     var mode: AppMode {
-        get { AppMode(rawValue: currentMode) ?? .cycleTracking }
-        set { currentMode = newValue.rawValue }
+        get { AppMode(rawValue: currentModeRaw) ?? .cycleTracking }
+        set {
+            currentModeRaw = newValue.rawValue
+            touch()
+        }
     }
-    
-    func updateTimestamp() {
+
+    func touch() {
         updatedAt = Date()
     }
 }

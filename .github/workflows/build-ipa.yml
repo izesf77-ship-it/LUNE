@@ -1,4 +1,4 @@
-name: Build Unsigned IPA
+name: Build LUNÉ unsigned IPA
 
 on:
   push:
@@ -8,21 +8,25 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
-    name: Build LUNÉ for iOS
+  build-ipa:
+    name: Build unsigned device IPA
     runs-on: xcode-27
-    
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v4
-      
-      - name: Show Xcode version
-        run: xcodebuild -version
-      
-      - name: Show available SDKs
-        run: xcodebuild -showsdks
-      
-      - name: Build for device
+
+      - name: Inspect toolchain
+        run: |
+          echo "--- xcode-select ---"
+          xcode-select -p
+          echo "--- xcodebuild ---"
+          xcodebuild -version
+          echo "--- SDKs ---"
+          xcodebuild -showsdks
+          echo "--- schemes ---"
+          xcodebuild -list -project LUNE.xcodeproj
+
+      - name: Build for iOS device (Release, unsigned)
         run: |
           xcodebuild clean build \
             -project LUNE.xcodeproj \
@@ -36,24 +40,77 @@ jobs:
             CODE_SIGN_ENTITLEMENTS="" \
             DEVELOPMENT_TEAM="" \
             PROVISIONING_PROFILE_SPECIFIER="" \
-            BUILD_DIR="${PWD}/build"
-      
+            BUILD_DIR="${PWD}/build" \
+            ONLY_ACTIVE_ARCH=NO \
+            -quiet
+
+      - name: Verify built app
+        run: |
+          test -d build/Release-iphoneos/LUNE.app || { echo "LUNE.app not found"; exit 1; }
+          echo "--- executable ---"
+          file build/Release-iphoneos/LUNE.app/LUNE
+          echo "--- architectures ---"
+          lipo -info build/Release-iphoneos/LUNE.app/LUNE
+          if file build/Release-iphoneos/LUNE.app/LUNE | grep -qi 'simulator'; then
+            echo "ERROR: simulator executable instead of device executable"
+            exit 1
+          fi
+          if ! lipo -info build/Release-iphoneos/LUNE.app/LUNE | grep -q 'arm64'; then
+            echo "ERROR: no arm64 device slice"
+            exit 1
+          fi
+
       - name: Create IPA
         run: |
+          rm -rf Payload LUNE-unsigned.ipa
           mkdir -p Payload
           cp -R build/Release-iphoneos/LUNE.app Payload/
-          zip -r LUNE-unsigned.ipa Payload
+          zip -qry LUNE-unsigned.ipa Payload
           rm -rf Payload
-      
-      - name: Verify IPA structure
+          test -s LUNE-unsigned.ipa
+
+      - name: Verify IPA contents
         run: |
           unzip -l LUNE-unsigned.ipa
-          echo "---"
-          echo "IPA created successfully"
-      
+          unzip -p LUNE-unsigned.ipa Payload/LUNE.app/Info.plist > /tmp/LUNE-Info.plist
+          plutil -lint /tmp/LUNE-Info.plist
+          echo "IPA_OK"
+
       - name: Upload IPA artifact
         uses: actions/upload-artifact@v4
         with:
           name: LUNE-unsigned
           path: LUNE-unsigned.ipa
           retention-days: 30
+          if-no-files-found: error
+
+  unit-tests:
+    name: Unit and integration tests (simulator)
+    runs-on: xcode-27
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Available simulators
+        run: xcrun simctl list devices available | head -40
+
+      - name: Run tests
+        run: |
+          SIMULATOR=$(xcrun simctl list devices available | grep -m1 'iPhone 16 (' | sed -E 's/^[[:space:]]*([^()]*) \([^()]*\).*/\1/' | xargs)
+          if [ -z "$SIMULATOR" ]; then
+            SIMULATOR=$(xcrun simctl list devices available | grep -m1 'iPhone' | sed -E 's/^[[:space:]]*([^()]*) \([^()]*\).*/\1/' | xargs)
+          fi
+          echo "Using simulator: $SIMULATOR"
+          xcodebuild test \
+            -project LUNE.xcodeproj \
+            -scheme LUNE \
+            -configuration Debug \
+            -sdk iphonesimulator \
+            -destination "platform=iOS Simulator,name=$SIMULATOR" \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY="" \
+            DEVELOPMENT_TEAM="" \
+            PROVISIONING_PROFILE_SPECIFIER="" \
+            ONLY_ACTIVE_ARCH=YES \
+            -quiet

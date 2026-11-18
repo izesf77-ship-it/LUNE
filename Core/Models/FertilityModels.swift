@@ -4,87 +4,74 @@ import SwiftData
 // MARK: - Базальная температура
 
 @Model
-final class BasalTemperatureEntry {
-    
+final class BasalTemperatureEntry: DayKeyedRecord {
     @Attribute(.unique) var id: UUID
     var createdAt: Date
     var updatedAt: Date
-    var date: Date
-    
-    /// Температура в градусах Цельсия (обычно 36.0-37.5)
-    var temperature: Double
-    
-    /// Время измерения
-    var measurementTime: Date
-    
+    var dayKey: String
+
+    var celsius: Double
+    var measuredAt: Date
     var notes: String?
-    
+
     init(
         id: UUID = UUID(),
-        date: Date,
-        temperature: Double,
-        measurementTime: Date = Date(),
+        day: CalendarDate,
+        celsius: Double,
+        measuredAt: Date = Date(),
         notes: String? = nil
     ) {
         self.id = id
-        self.createdAt = Date()
-        self.updatedAt = Date()
-        self.date = date
-        self.temperature = temperature
-        self.measurementTime = measurementTime
+        let now = Date()
+        self.createdAt = now
+        self.updatedAt = now
+        self.dayKey = day.key
+        self.celsius = min(max(celsius, 34), 42)
+        self.measuredAt = measuredAt
         self.notes = notes
     }
-    
-    /// Валидация температуры
-    var isValid: Bool {
-        temperature >= 35.0 && temperature <= 39.0
-    }
+
+    var isValid: Bool { celsius >= 35 && celsius <= 39 }
+    func touch() { updatedAt = Date() }
 }
 
 // MARK: - Цервикальная слизь
 
 @Model
-final class CervicalMucusEntry {
-    
+final class CervicalMucusEntry: DayKeyedRecord {
     @Attribute(.unique) var id: UUID
     var createdAt: Date
     var updatedAt: Date
-    var date: Date
-    
-    var type: String // CervicalMucusType raw value
+    var dayKey: String
+    var typeRaw: String
     var notes: String?
-    
-    init(
-        id: UUID = UUID(),
-        date: Date,
-        type: CervicalMucusType,
-        notes: String? = nil
-    ) {
+
+    init(id: UUID = UUID(), day: CalendarDate, type: CervicalMucusType, notes: String? = nil) {
         self.id = id
-        self.createdAt = Date()
-        self.updatedAt = Date()
-        self.date = date
-        self.type = type.rawValue
+        let now = Date()
+        self.createdAt = now
+        self.updatedAt = now
+        self.dayKey = day.key
+        self.typeRaw = type.rawValue
         self.notes = notes
     }
-    
-    var mucusType: CervicalMucusType {
-        get { CervicalMucusType(rawValue: type) ?? .none }
-        set { type = newValue.rawValue }
+
+    var type: CervicalMucusType {
+        get { CervicalMucusType(rawValue: typeRaw) ?? .unknown }
+        set { typeRaw = newValue.rawValue; updatedAt = Date() }
     }
+
+    func touch() { updatedAt = Date() }
 }
 
-enum CervicalMucusType: String, Codable, CaseIterable {
-    case none = "none"
-    case dry = "dry"
-    case sticky = "sticky"
-    case creamy = "creamy"
-    case watery = "watery"
-    case eggWhite = "egg_white"
-    
+enum CervicalMucusType: String, Codable, CaseIterable, Identifiable {
+    case unknown, dry, sticky, creamy, watery, eggWhite
+
+    var id: String { rawValue }
+
     var displayName: String {
         switch self {
-        case .none: return "Нет"
+        case .unknown: return "Не отслеживала"
         case .dry: return "Сухая"
         case .sticky: return "Липкая"
         case .creamy: return "Кремовая"
@@ -92,93 +79,96 @@ enum CervicalMucusType: String, Codable, CaseIterable {
         case .eggWhite: return "Как яичный белок"
         }
     }
-    
-    var fertilityIndicator: FertilityLevel {
-        switch self {
-        case .none, .dry: return .low
-        case .sticky, .creamy: return .medium
-        case .watery, .eggWhite: return .high
-        }
+
+    /// Наблюдаемый признак, а не подтверждение овуляции.
+    var isMoreFertileSign: Bool {
+        self == .watery || self == .eggWhite
     }
 }
 
 // MARK: - ЛГ-тест
 
 @Model
-final class LHTestEntry {
-    
+final class LHTestEntry: DayKeyedRecord {
     @Attribute(.unique) var id: UUID
     var createdAt: Date
     var updatedAt: Date
-    var date: Date
-    
-    var result: String // TestResult raw value
-    var testTime: Date
+    var dayKey: String
+    var resultRaw: String
+    var testedAt: Date
     var notes: String?
-    
+
     init(
         id: UUID = UUID(),
-        date: Date,
+        day: CalendarDate,
         result: TestResult,
-        testTime: Date = Date(),
+        testedAt: Date = Date(),
         notes: String? = nil
     ) {
         self.id = id
-        self.createdAt = Date()
-        self.updatedAt = Date()
-        self.date = date
-        self.result = result.rawValue
-        self.testTime = testTime
+        let now = Date()
+        self.createdAt = now
+        self.updatedAt = now
+        self.dayKey = day.key
+        self.resultRaw = result.rawValue
+        self.testedAt = testedAt
         self.notes = notes
     }
-    
-    var testResult: TestResult {
-        get { TestResult(rawValue: result) ?? .negative }
-        set { result = newValue.rawValue }
+
+    var result: TestResult {
+        get { TestResult(rawValue: resultRaw) ?? .invalid }
+        set { resultRaw = newValue.rawValue; updatedAt = Date() }
     }
+
+    func touch() { updatedAt = Date() }
 }
 
 // MARK: - Тест на беременность
 
 @Model
-final class PregnancyTestEntry {
-    
+final class PregnancyTestEntry: DayKeyedRecord {
     @Attribute(.unique) var id: UUID
     var createdAt: Date
     var updatedAt: Date
-    var date: Date
-    
-    var result: String // TestResult raw value
-    var testTime: Date
+    var dayKey: String
+    var resultRaw: String
+    var testedAt: Date
     var notes: String?
-    
+    /// Отдельное согласие пользователя на информационный сценарий наблюдения.
+    var wantsObservationScenario: Bool
+
     init(
         id: UUID = UUID(),
-        date: Date,
+        day: CalendarDate,
         result: TestResult,
-        testTime: Date = Date(),
-        notes: String? = nil
+        testedAt: Date = Date(),
+        notes: String? = nil,
+        wantsObservationScenario: Bool = false
     ) {
         self.id = id
-        self.createdAt = Date()
-        self.updatedAt = Date()
-        self.date = date
-        self.result = result.rawValue
-        self.testTime = testTime
+        let now = Date()
+        self.createdAt = now
+        self.updatedAt = now
+        self.dayKey = day.key
+        self.resultRaw = result.rawValue
+        self.testedAt = testedAt
         self.notes = notes
+        self.wantsObservationScenario = wantsObservationScenario
     }
-    
-    var testResult: TestResult {
-        get { TestResult(rawValue: result) ?? .negative }
-        set { result = newValue.rawValue }
+
+    var result: TestResult {
+        get { TestResult(rawValue: resultRaw) ?? .invalid }
+        set { resultRaw = newValue.rawValue; updatedAt = Date() }
     }
+
+    func touch() { updatedAt = Date() }
 }
 
-enum TestResult: String, Codable, CaseIterable {
-    case positive = "positive"
-    case negative = "negative"
-    case invalid = "invalid"
-    
+enum TestResult: String, Codable, CaseIterable, Identifiable {
+    case positive, negative, invalid
+
+    var id: String { rawValue }
+
     var displayName: String {
         switch self {
         case .positive: return "Положительный"
@@ -186,48 +176,36 @@ enum TestResult: String, Codable, CaseIterable {
         case .invalid: return "Недействительный"
         }
     }
+
+    var symbolName: String {
+        switch self {
+        case .positive: return "checkmark.circle.fill"
+        case .negative: return "xmark.circle"
+        case .invalid: return "questionmark.circle"
+        }
+    }
 }
 
-// MARK: - Интимность (добровольная регистрация)
+// MARK: - Половая близость (добровольная запись)
 
 @Model
-final class IntimacyEntry {
-    
+final class IntimacyEntry: DayKeyedRecord {
     @Attribute(.unique) var id: UUID
     var createdAt: Date
     var updatedAt: Date
-    var date: Date
-    
+    var dayKey: String
     var protectionUsed: Bool
     var notes: String?
-    
-    init(
-        id: UUID = UUID(),
-        date: Date,
-        protectionUsed: Bool = false,
-        notes: String? = nil
-    ) {
+
+    init(id: UUID = UUID(), day: CalendarDate, protectionUsed: Bool = false, notes: String? = nil) {
         self.id = id
-        self.createdAt = Date()
-        self.updatedAt = Date()
-        self.date = date
+        let now = Date()
+        self.createdAt = now
+        self.updatedAt = now
+        self.dayKey = day.key
         self.protectionUsed = protectionUsed
         self.notes = notes
     }
-}
 
-// MARK: - Вспомогательные типы
-
-enum FertilityLevel {
-    case low
-    case medium
-    case high
-    
-    var displayName: String {
-        switch self {
-        case .low: return "Низкая"
-        case .medium: return "Средняя"
-        case .high: return "Высокая"
-        }
-    }
+    func touch() { updatedAt = Date() }
 }

@@ -1,113 +1,73 @@
 # LUNÉ
 
-Premium iOS-приложение для отслеживания менструального цикла и планирования беременности.
+Офлайн-приложение для отслеживания менструального цикла и планирования беременности.
+Нативный SwiftUI + SwiftData, без аккаунта, сервера, аналитики, рекламы и подписок.
 
-## Особенности
+## Возможности
 
-- ✨ **Два режима**: отслеживание цикла и планирование беременности
-- 🔒 **100% приватность**: все данные хранятся локально на устройстве
-- 🎨 **Premium UI**: элегантный интерфейс в стиле Soft Rose Luxury
-- 📱 **Нативный SwiftUI**: современная разработка для iOS 17+
-- 📊 **Аналитика**: визуализация циклов, симптомов и тенденций
-- 🌙 **Тёмная тема**: полная поддержка Dark Mode
-- ♿️ **Accessibility**: VoiceOver, Dynamic Type, Reduce Motion
+- Два режима (отслеживание цикла / планирование беременности) в одном профиле и одной базе данных.
+- Календарь с подтверждёнными месячными, ориентировочным прогнозом, фертильным окном и наблюдениями.
+- Дневник: симптомы, настроение, самочувствие, заметки, лекарства, кровотечение.
+- Планирование: ЛГ-тесты, тесты на беременность, базальная температура, слизь, добровольный учёт близости.
+- Тестируемый движок прогнозирования цикла (медиана, разброс, диапазон, объяснение).
+- Движок фертильных наблюдений с чётким разделением календаря, признаков и неопределённости.
+- Локальный движок рекомендаций со ссылками на источники и датой проверки.
+- Локальные уведомления с нейтральными текстами.
+- Шифрованный экспорт/импорт (AES-GCM + PBKDF2-HMAC-SHA256), PDF-отчёты.
+- Face ID, Keychain, Data Protection, защита содержимого в app switcher.
+- Тёмная тема, Dynamic Type, VoiceOver, Reduce Motion.
 
-## Технологии
-
-- **Platform**: iOS 17+
-- **UI Framework**: SwiftUI
-- **Database**: SwiftData
-- **Target Device**: iPhone 16
-- **Language**: Swift 5.9+
-- **Build Tool**: Xcode 27
-
-## Структура проекта
+## Архитектура
 
 ```
 LUNE/
-├── App/                  # Точка входа и главная навигация
+├── App/           состояние приложения, корневые экраны, таб-бар
 ├── Core/
-│   ├── DesignSystem/     # Токены, компоненты UI
-│   ├── Database/         # SwiftData менеджер
-│   ├── Models/           # Модели данных
-│   ├── Security/         # Шифрование, Face ID
-│   ├── Predictions/      # Алгоритмы прогнозирования
-│   ├── Recommendations/  # Медицинские рекомендации
-│   ├── Notifications/    # Локальные уведомления
-│   └── Backup/           # Экспорт и импорт
-├── Features/             # Экраны и функции приложения
-│   ├── Onboarding/
-│   ├── Home/
-│   ├── Calendar/
-│   ├── Journal/
-│   ├── Planning/
-│   ├── Analytics/
-│   ├── Reports/
-│   └── Settings/
-├── Resources/            # Ассеты, локализации, контент
-└── Tests/                # Unit и Integration тесты
+│   ├── DesignSystem/   токены и библиотека компонентов (+ каталог превью)
+│   ├── Database/       SwiftData: схемы v1/v2, план миграции, менеджер
+│   ├── Models/         17 моделей с UUID, датами и валидацией
+│   ├── Extensions/     CalendarDate — арифметика по календарным дням без DST-сдвигов
+│   ├── Security/       Face ID, Keychain, privacy shield
+│   ├── Predictions/    CyclePredictionEngine, FertilityInsightsEngine
+│   ├── Recommendations/ локальные правила и медицинская библиотека
+│   ├── Notifications/  UserNotifications + AppDelegate
+│   ├── Backup/         версионированный шифрованный backup
+│   └── Reports/        PDF-генератор
+├── Features/       онбординг, главные экраны, календарь, дневник, аналитика...
+├── Resources/      ассеты, String Catalog, медицинские материалы
+└── Tests/          Unit + Integration (XCTest)
 ```
+
+Xcode-проект генерируется детерминированно:
+
+```bash
+python3 scripts/generate_xcodeproj.py
+python3 scripts/generate_app_icon.py
+```
+
+Иконка приложения создаётся локально скриптом без внешних зависимостей.
 
 ## Сборка
 
-### Требования
+CI: `.github/workflows/build-ipa.yml`, раннер `xcode-27`.
 
-- macOS с Xcode 15+
-- iOS SDK 17+
-- GitHub Actions с xcode-27 runner
+- device-сборка: `xcodebuild ... -sdk iphoneos -destination 'generic/platform=iOS'`;
+- подпись отключена (`CODE_SIGNING_ALLOWED=NO`, `CODE_SIGNING_REQUIRED=NO`, пустые `CODE_SIGN_IDENTITY` / `DEVELOPMENT_TEAM`);
+- проверяется, что внутри IPA находится arm64 device-исполняемый файл, а не симуляторный;
+- артефакт: `LUNE-unsigned` → `LUNE-unsigned.ipa`.
 
-### Локальная сборка
+Tests запускаются отдельным job на iOS Simulator.
 
-```bash
-# Открыть проект
-open LUNE.xcodeproj
+## Установка unsigned IPA
 
-# Выбрать iPhone 16 simulator
-# Build (⌘B)
-# Run (⌘R)
-```
+Unsigned IPA нельзя установить напрямую через App Store. Для тестирования на своём iPhone его нужно подписать локально (например, через Sideloadly/AltStore с бесплатным Apple ID development-сертификатом) или установить через Xcode Devices and Simulators на симулятор после пересборки под `iphonesimulator`.
 
-### CI/CD
+## Ограничения
 
-Проект использует GitHub Actions для автоматической сборки unsigned IPA:
+- WidgetKit не включён: app group и entitlements усложнили бы надёжную unsigned-сборку.
+- Синхронизация iCloud/CloudKit намеренно не используется.
+- Визуальная проверка на iPhone 16-симуляторе возможна только на macOS с Xcode; в среде разработки (Windows) она не выполнялась.
 
-```bash
-# Push в main запускает workflow
-git push origin main
+## Дисклеймер
 
-# Артефакт: LUNE-unsigned.ipa
-# Скачайте из Actions → Artifacts
-```
-
-## Установка IPA
-
-Unsigned IPA можно установить через:
-
-- **Sideloadly** (Windows/macOS)
-- **AltStore** (требует AltServer)
-- **Xcode** (Devices and Simulators)
-- **Apple Configurator** (macOS)
-
-## Приватность
-
-LUNÉ — это полностью офлайн-приложение:
-
-- ❌ Нет серверов
-- ❌ Нет аналитики
-- ❌ Нет рекламы
-- ❌ Нет аккаунтов
-- ✅ Все данные хранятся локально в SwiftData
-- ✅ Опциональное шифрование с Face ID
-- ✅ Безопасный экспорт с паролем
-
-## Лицензия
-
-Все права защищены. Это закрытый проект разработан для личного использования.
-
-## Контакты
-
-Вопросы и предложения: создайте Issue в этом репозитории.
-
----
-
-**LUNÉ** — забота о женском здоровье с уважением к приватности.
+LUNÉ не является медицинским изделием, не ставит диагнозы и не является средством контрацепции. Прогнозы ориентировочны и основаны только на введённых пользователем данных.

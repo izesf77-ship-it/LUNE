@@ -1,75 +1,81 @@
 import SwiftUI
 
 struct ContentView: View {
-    
-    @EnvironmentObject var appState: AppState
-    
+    @EnvironmentObject private var appState: AppState
+    @Environment(\.scenePhase) private var scenePhase
+
     var body: some View {
         ZStack {
+            ColorTokens.background.ignoresSafeArea()
+
             if appState.isLoading {
                 SplashView()
-            } else if let profile = appState.userProfile {
+            } else if appState.isLocked {
+                AppLockView()
+            } else if let profile = appState.profile {
                 if profile.hasCompletedOnboarding {
                     MainTabView()
                 } else {
                     WelcomeView()
                 }
-            } else {
-                // Fallback: не должно произойти
-                ProgressView()
             }
         }
-        .animation(.easeInOut, value: appState.isLoading)
-        .animation(.easeInOut, value: appState.userProfile?.hasCompletedOnboarding)
+        .overlay(alignment: .bottom) {
+            if let toast = appState.toast {
+                LuneToast(message: toast)
+                    .padding(.bottom, SpacingTokens.xl)
+                    .transition(.move(edge: .bottom).combined(with: .opacity))
+            }
+        }
+        .animation(.easeInOut(duration: AnimationTokens.fast), value: appState.isLoading)
+        .animation(.easeInOut(duration: AnimationTokens.fast), value: appState.toast)
+        .onChange(of: scenePhase) { _, newPhase in
+            if newPhase == .background {
+                PrivacyShield.shared.show()
+            } else if newPhase == .active {
+                PrivacyShield.shared.hide()
+            }
+        }
     }
 }
 
-// MARK: - Splash View
+// MARK: - Splash
 
 struct SplashView: View {
-    
-    @State private var scale: CGFloat = 0.8
-    @State private var opacity: Double = 0.0
-    
+    @State private var appeared = false
+
     var body: some View {
-        ZStack {
-            ColorTokens.Light.background
-                .ignoresSafeArea()
-            
-            VStack(spacing: SpacingTokens.md) {
-                // Иконка приложения (placeholder)
+        VStack(spacing: SpacingTokens.md) {
+            ZStack {
                 Circle()
                     .fill(
                         LinearGradient(
-                            colors: [
-                                ColorTokens.Light.rosePrimary,
-                                ColorTokens.Light.blush
-                            ],
+                            colors: [ColorTokens.rosePrimary, ColorTokens.blush],
                             startPoint: .topLeading,
                             endPoint: .bottomTrailing
                         )
                     )
-                    .frame(width: 100, height: 100)
-                    .overlay(
-                        Image(systemName: "heart.fill")
-                            .font(.system(size: 50))
-                            .foregroundStyle(.white)
-                    )
-                    .scaleEffect(scale)
-                    .opacity(opacity)
-                
-                Text("LUNÉ")
-                    .font(TypographyTokens.displayLarge)
-                    .foregroundStyle(ColorTokens.Light.textPrimary)
-                    .opacity(opacity)
+                Image(systemName: "sparkles")
+                    .font(.system(size: 44))
+                    .foregroundStyle(.white)
             }
+            .frame(width: 96, height: 96)
+
+            Text("LUNÉ")
+                .font(TypographyTokens.displayLarge)
+                .foregroundStyle(ColorTokens.textPrimary)
+
+            Text("Забота о себе — в вашем ритме")
+                .font(TypographyTokens.bodySmall)
+                .foregroundStyle(ColorTokens.textSecondary)
         }
+        .opacity(appeared ? 1 : 0)
+        .scaleEffect(appeared ? 1 : 0.94)
         .onAppear {
-            withAnimation(.easeOut(duration: 0.6)) {
-                scale = 1.0
-                opacity = 1.0
-            }
+            withAnimation(.easeOut(duration: 0.45)) { appeared = true }
         }
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("LUNÉ. Загрузка")
     }
 }
 

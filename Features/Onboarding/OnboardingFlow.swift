@@ -1,375 +1,328 @@
 import SwiftUI
 
+/// Контроллер онбординга. Все вопросы допускают «Не знаю» или «Пропустить».
 struct OnboardingFlow: View {
-    
-    @EnvironmentObject var appState: AppState
-    @Environment(\.dismiss) var dismiss
-    
-    @State private var currentStep = 0
-    @State private var selectedMode: AppMode = .cycleTracking
-    @State private var lastPeriodStart: Date = Date()
-    @State private var typicalCycleLength: Int? = 28
-    @State private var typicalPeriodDuration: Int? = 5
-    
-    private let totalSteps = 5
-    
+    @EnvironmentObject private var appState: AppState
+
+    @State private var step = 0
+    @State private var mode: AppMode = .cycleTracking
+    @State private var lastPeriodDate: Date = Date()
+    @State private var hasLastPeriod = true
+    @State private var cycleLength: Int?
+    @State private var periodDuration: Int?
+    @State private var historyDates: [Date] = []
+    @State private var notificationsOn = false
+    @State private var faceIDOn = false
+    @State private var isSaving = false
+
+    private let totalSteps = 10
+
     var body: some View {
-        ZStack {
-            ColorTokens.background
-                .ignoresSafeArea()
-            
-            VStack(spacing: 0) {
-                // Progress bar
-                ProgressView(value: Double(currentStep + 1), total: Double(totalSteps))
-                    .tint(ColorTokens.rosePrimary)
-                    .padding(.horizontal, SpacingTokens.screenHorizontal)
-                    .padding(.top, SpacingTokens.sm)
-                
-                // Content
-                TabView(selection: $currentStep) {
-                    ModeSelectionStep(selectedMode: $selectedMode)
-                        .tag(0)
-                    
-                    LastPeriodStep(lastPeriodStart: $lastPeriodStart)
-                        .tag(1)
-                    
-                    CycleLengthStep(cycleLength: $typicalCycleLength)
-                        .tag(2)
-                    
-                    PeriodDurationStep(duration: $typicalPeriodDuration)
-                        .tag(3)
-                    
-                    CompletionStep()
-                        .tag(4)
+        NavigationStack {
+            VStack(spacing: SpacingTokens.sm) {
+                progressBar
+                content
+            }
+            .background(ColorTokens.background.ignoresSafeArea())
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    if step > 0 {
+                        Button("Назад") {
+                            withAnimation(AnimationTokens.selection) { step -= 1 }
+                        }
+                        .foregroundStyle(ColorTokens.textSecondary)
+                        .frame(minHeight: SpacingTokens.touchMinimum)
+                    }
                 }
-                .tabViewStyle(.page(indexDisplayMode: .never))
-                .animation(.easeInOut, value: currentStep)
-                
-                // Navigation
-                HStack(spacing: SpacingTokens.sm) {
-                    if currentStep > 0 {
-                        Button(action: previousStep) {
-                            Text("Назад")
-                                .font(TypographyTokens.labelMedium)
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("Пропустить") {
+                        finish(skipRest: true)
+                    }
+                    .font(TypographyTokens.labelMedium)
+                    .foregroundStyle(ColorTokens.roseDeep)
+                    .frame(minHeight: SpacingTokens.touchMinimum)
+                }
+            }
+        }
+    }
+
+    private var progressBar: some View {
+        HStack(spacing: 5) {
+            ForEach(0..<totalSteps, id: \.self) { index in
+                Capsule()
+                    .fill(index <= step ? ColorTokens.rosePrimary : ColorTokens.separator)
+                    .frame(height: 4)
+            }
+        }
+        .padding(.horizontal, SpacingTokens.screenHorizontal)
+        .padding(.top, SpacingTokens.xxs)
+        .accessibilityLabel("Шаг \(step + 1) из \(totalSteps)")
+    }
+
+    @ViewBuilder
+    private var content: some View {
+        switch step {
+        case 0:
+            OnboardingStepShell(
+                symbol: "sparkles",
+                title: "Добро пожаловать в LUNÉ",
+                message: "Пространство для наблюдения за циклом и самочувствием. Ваши данные остаются на этом iPhone.",
+                buttonTitle: "Начать"
+            ) { step = 1 }
+        case 1:
+            OnboardingStepShell(
+                symbol: "hand.raised.fill",
+                title: "Ваша приватность",
+                message: "LUNÉ работает полностью офлайн: без аккаунта, интернета, аналитики и рекламы. Мы не отправляем ваши записи никуда — даже в облако.",
+                buttonTitle: "Понятно"
+            ) { step = 2 }
+        case 2:
+            ModeStep(mode: $mode) { step = 3 }
+        case 3:
+            LastPeriodStep(date: $lastPeriodDate, hasPeriod: $hasLastPeriod) { step = 4 }
+        case 4:
+            CycleLengthStep(length: $cycleLength) { step = 5 }
+        case 5:
+            PeriodDurationStep(duration: $periodDuration) { step = 6 }
+        case 6:
+            HistoryStep(dates: $historyDates) { step = 7 }
+        case 7:
+            NotificationsStep(isOn: $notificationsOn) { step = 8 }
+        case 8:
+            BiometricStep(isOn: $faceIDOn) { step = 9 }
+        default:
+            FinishStep(isSaving: isSaving) { finish(skipRest: false) }
+        }
+    }
+
+    private func finish(skipRest: Bool) {
+        guard !isSaving else { return }
+        isSaving = true
+
+        let profile = appState.profile ?? DatabaseManager.shared.fetchOrCreateProfile()
+        profile.mode = mode
+        profile.typicalCycleLength = skipRest ? nil : cycleLength
+        profile.typicalPeriodDuration = skipRest ? nil : periodDuration
+        profile.notificationsEnabled = skipRest ? false : notificationsOn
+        profile.faceIDEnabled = skipRest ? false : faceIDOn && BiometricAuth.isAvailable()
+        profile.hasCompletedOnboarding = true
+        profile.touch()
+
+        let database = DatabaseManager.shared
+        if !skipRest && hasLastPeriod {
+            let existing = Set(database.periods().map(\.startDayKey))
+            let start = CalendarDate(lastPeriodDate)
+            if !existing.contains(start.key) {
+                database.insert(MenstrualPeriod(
+                    startDay: start,
+                    userReportedDuration: periodDuration
+                ))
+            }
+        }
+        if !skipRest {
+            for date in historyDates {
+                let day = CalendarDate(date)
+                if !database.periods().contains(where: { $0.startDay == day }) {
+                    database.insert(MenstrualPeriod(startDay: day))
+                }
+            }
+        }
+        database.save()
+        appState.refresh()
+        appState.showToast("Настройки сохранены")
+
+        Task { @MainActor in
+            await NotificationService.reschedule(
+                enabled: profile.notificationsEnabled,
+                prediction: appState.prediction,
+                periodDaysBefore: profile.periodReminderDaysBefore,
+                symptomHour: profile.symptomReminderEnabled ? profile.symptomReminderHour : nil,
+                lhHour: nil,
+                pregnancyHour: nil
+            )
+        }
+    }
+}
+
+// MARK: - Shell
+
+struct OnboardingStepShell<Content: View>: View {
+    let symbol: String
+    let title: String
+    let message: String
+    let buttonTitle: String
+    let next: () -> Void
+    let content: Content
+
+    init(
+        symbol: String,
+        title: String,
+        message: String,
+        buttonTitle: String = "Продолжить",
+        @ViewBuilder content: () -> Content = { EmptyView() },
+        next: @escaping () -> Void
+    ) {
+        self.symbol = symbol
+        self.title = title
+        self.message = message
+        self.buttonTitle = buttonTitle
+        self.content = content()
+        self.next = next
+    }
+
+    var body: some View {
+        ScrollView {
+            VStack(spacing: SpacingTokens.md) {
+                Spacer(minLength: SpacingTokens.xl)
+
+                Image(systemName: symbol)
+                    .font(.system(size: 52))
+                    .foregroundStyle(ColorTokens.rosePrimary)
+                    .accessibilityHidden(true)
+
+                VStack(spacing: SpacingTokens.xs) {
+                    Text(title)
+                        .font(TypographyTokens.displayMedium)
+                        .foregroundStyle(ColorTokens.textPrimary)
+                        .multilineTextAlignment(.center)
+
+                    Text(message)
+                        .font(TypographyTokens.bodyLarge)
+                        .foregroundStyle(ColorTokens.textSecondary)
+                        .multilineTextAlignment(.center)
+                }
+
+                content
+
+                Spacer(minLength: SpacingTokens.lg)
+
+                LunePrimaryButton(title: buttonTitle, action: next)
+            }
+            .padding(.horizontal, SpacingTokens.screenHorizontal)
+            .frame(minHeight: 560)
+        }
+        .scrollBounceBehavior(.basedOnSize)
+    }
+}
+
+// MARK: - Early steps
+
+struct ModeStep: View {
+    @Binding var mode: AppMode
+    let next: () -> Void
+
+    var body: some View {
+        VStack(spacing: SpacingTokens.sm) {
+            ForEach(AppMode.allCases) { option in
+                Button {
+                    AnimationTokens.selectionHaptic()
+                    mode = option
+                } label: {
+                    HStack(spacing: SpacingTokens.sm) {
+                        Image(systemName: option.iconName)
+                            .font(.system(size: 26))
+                            .foregroundStyle(ColorTokens.roseDeep)
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text(option.displayName)
+                                .font(TypographyTokens.titleSmall)
+                                .foregroundStyle(ColorTokens.textPrimary)
+                            Text(option.description)
+                                .font(TypographyTokens.bodySmall)
                                 .foregroundStyle(ColorTokens.textSecondary)
-                                .frame(maxWidth: .infinity)
-                                .frame(height: SpacingTokens.buttonHeight)
+                        }
+                        Spacer()
+                        if mode == option {
+                            Image(systemName: "checkmark.circle.fill")
+                                .foregroundStyle(ColorTokens.roseDeep)
                         }
                     }
-                    
-                    LunePrimaryButton(
-                        title: currentStep == totalSteps - 1 ? "Завершить" : "Продолжить",
-                        action: nextStep
+                    .padding(SpacingTokens.sm)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .background(
+                        RoundedRectangle(cornerRadius: RadiusTokens.md)
+                            .fill(mode == option ? ColorTokens.blush.opacity(0.6) : ColorTokens.surface)
                     )
-                }
-                .padding(.horizontal, SpacingTokens.screenHorizontal)
-                .padding(.bottom, SpacingTokens.md)
-            }
-        }
-        .interactiveDismissDisabled()
-    }
-    
-    private func nextStep() {
-        if currentStep < totalSteps - 1 {
-            withAnimation {
-                currentStep += 1
-            }
-        } else {
-            completeOnboarding()
-        }
-    }
-    
-    private func previousStep() {
-        if currentStep > 0 {
-            withAnimation {
-                currentStep -= 1
-            }
-        }
-    }
-    
-    private func completeOnboarding() {
-        guard let profile = appState.userProfile else { return }
-        
-        // Сохраняем настройки
-        profile.mode = selectedMode
-        profile.typicalCycleLength = typicalCycleLength
-        profile.typicalPeriodDuration = typicalPeriodDuration
-        
-        // Добавляем последний период
-        let period = MenstrualPeriod(
-            startDate: lastPeriodStart,
-            endDate: nil,
-            isConfirmed: true
-        )
-        DatabaseManager.shared.addPeriod(period)
-        
-        // Завершаем onboarding
-        appState.completeOnboarding()
-        dismiss()
-    }
-}
-
-// MARK: - Шаг 1: Выбор режима
-
-struct ModeSelectionStep: View {
-    
-    @Binding var selectedMode: AppMode
-    
-    var body: some View {
-        VStack(spacing: SpacingTokens.xl) {
-            VStack(spacing: SpacingTokens.sm) {
-                Text("Выберите режим")
-                    .luneTitleLarge()
-                
-                Text("Вы сможете изменить его в любое время")
-                    .luneBodyMedium()
-                    .multilineTextAlignment(.center)
-            }
-            .padding(.top, SpacingTokens.xxl)
-            
-            VStack(spacing: SpacingTokens.sm) {
-                ForEach(AppMode.allCases, id: \.self) { mode in
-                    ModeCard(
-                        mode: mode,
-                        isSelected: selectedMode == mode,
-                        action: {
-                            AnimationTokens.hapticSelection()
-                            selectedMode = mode
-                        }
-                    )
-                }
-            }
-            
-            Spacer()
-        }
-        .luneScreenPadding()
-    }
-}
-
-struct ModeCard: View {
-    
-    let mode: AppMode
-    let isSelected: Bool
-    let action: () -> Void
-    
-    var body: some View {
-        Button(action: action) {
-            HStack(spacing: SpacingTokens.sm) {
-                Image(systemName: mode.iconName)
-                    .font(.system(size: SpacingTokens.iconLg))
-                    .foregroundStyle(isSelected ? ColorTokens.rosePrimary : ColorTokens.textSecondary)
-                
-                VStack(alignment: .leading, spacing: 4) {
-                    Text(mode.displayName)
-                        .font(TypographyTokens.titleSmall)
-                        .foregroundStyle(ColorTokens.textPrimary)
-                    
-                    Text(mode.description)
-                        .font(TypographyTokens.bodySmall)
-                        .foregroundStyle(ColorTokens.textSecondary)
-                        .multilineTextAlignment(.leading)
-                }
-                
-                Spacer()
-                
-                if isSelected {
-                    Image(systemName: "checkmark.circle.fill")
-                        .foregroundStyle(ColorTokens.rosePrimary)
-                        .font(.system(size: 24))
-                }
-            }
-            .padding(SpacingTokens.sm)
-            .background(
-                RoundedRectangle(cornerRadius: SpacingTokens.radiusMd)
-                    .fill(ColorTokens.surface)
                     .overlay(
-                        RoundedRectangle(cornerRadius: SpacingTokens.radiusMd)
-                            .strokeBorder(
-                                isSelected ? ColorTokens.rosePrimary : Color.clear,
-                                lineWidth: 2
-                            )
+                        RoundedRectangle(cornerRadius: RadiusTokens.md)
+                            .stroke(mode == option ? ColorTokens.rosePrimary : ColorTokens.separator, lineWidth: 1)
                     )
-            )
-            .luneCardShadow()
+                    .contentShape(Rectangle())
+                }
+                .buttonStyle(.plain)
+                .accessibilityAddTraits(mode == option ? [.isSelected] : [])
+            }
+
+            Text("Режим можно изменить в любой момент в настройках. История при этом сохраняется.")
+                .font(TypographyTokens.caption)
+                .foregroundStyle(ColorTokens.textTertiary)
+                .multilineTextAlignment(.center)
+
+            LunePrimaryButton(title: "Продолжить", action: next)
         }
-        .buttonStyle(.plain)
     }
 }
-
-// MARK: - Шаг 2: Последние месячные
 
 struct LastPeriodStep: View {
-    
-    @Binding var lastPeriodStart: Date
-    
+    @Binding var date: Date
+    @Binding var hasPeriod: Bool
+    let next: () -> Void
+
     var body: some View {
-        VStack(spacing: SpacingTokens.xl) {
-            VStack(spacing: SpacingTokens.sm) {
-                Text("Когда начались последние месячные?")
-                    .luneTitleLarge()
-                    .multilineTextAlignment(.center)
-                
-                Text("Это поможет точнее прогнозировать цикл")
-                    .luneBodyMedium()
+        VStack(spacing: SpacingTokens.sm) {
+            LuneSegmentedControl(
+                options: OnboardingChoice.allCases,
+                selection: Binding(
+                    get: { hasPeriod ? .known : .unknown },
+                    set: { hasPeriod = $0 == .known }
+                )
+            ) { $0.title }
+
+            if hasPeriod {
+                LuneDatePicker(title: "Дата начала последних месячных", date: $date)
+            } else {
+                Text("Это нормально. Прогноз появится после нескольких записей.")
+                    .font(TypographyTokens.bodyMedium)
+                    .foregroundStyle(ColorTokens.textSecondary)
                     .multilineTextAlignment(.center)
             }
-            .padding(.top, SpacingTokens.xxl)
-            
-            DatePicker(
-                "Дата начала",
-                selection: $lastPeriodStart,
-                in: ...Date(),
-                displayedComponents: .date
-            )
-            .datePickerStyle(.graphical)
-            .tint(ColorTokens.rosePrimary)
-            
-            Spacer()
+
+            LunePrimaryButton(title: "Продолжить", action: next)
         }
-        .luneScreenPadding()
     }
 }
 
-// MARK: - Шаг 3: Длина цикла
+enum OnboardingChoice: String, Identifiable, CaseIterable, Hashable {
+    case known, unknown
+    var id: String { rawValue }
+    var title: String { self == .known ? "Знаю дату" : "Не знаю" }
+}
 
 struct CycleLengthStep: View {
-    
-    @Binding var cycleLength: Int?
-    @State private var selectedLength: Int = 28
-    
+    @Binding var length: Int?
+    let next: () -> Void
+
+    private let options = [21, 24, 26, 28, 30, 32, 35]
+
     var body: some View {
-        VStack(spacing: SpacingTokens.xl) {
-            VStack(spacing: SpacingTokens.sm) {
-                Text("Какова обычная длина вашего цикла?")
-                    .luneTitleLarge()
-                    .multilineTextAlignment(.center)
-                
-                Text("Это среднее количество дней от начала одних месячных до начала следующих")
-                    .luneBodyMedium()
-                    .multilineTextAlignment(.center)
-            }
-            .padding(.top, SpacingTokens.xxl)
-            
-            VStack(spacing: SpacingTokens.md) {
-                Text("\(selectedLength) дней")
-                    .font(TypographyTokens.numberLarge)
-                    .foregroundStyle(ColorTokens.rosePrimary)
-                
-                Picker("Длина цикла", selection: $selectedLength) {
-                    ForEach(21...45, id: \.self) { days in
-                        Text("\(days)").tag(days)
+        VStack(spacing: SpacingTokens.sm) {
+            LazyVGrid(
+                columns: [GridItem(.adaptive(minimum: 76), spacing: SpacingTokens.xs)],
+                spacing: SpacingTokens.xs
+            ) {
+                ForEach(options, id: \.self) { value in
+                    LuneSelectableChip(title: "\(value) дн.", isSelected: length == value) {
+                        length = length == value ? nil : value
                     }
                 }
-                .pickerStyle(.wheel)
-                .frame(height: 150)
-                
-                Button(action: {
-                    cycleLength = nil
-                }) {
-                    Text("Не знаю")
-                        .font(TypographyTokens.labelMedium)
-                        .foregroundStyle(ColorTokens.textSecondary)
-                }
             }
-            
-            Spacer()
-        }
-        .luneScreenPadding()
-        .onChange(of: selectedLength) { _, newValue in
-            cycleLength = newValue
-        }
-        .onAppear {
-            if let length = cycleLength {
-                selectedLength = length
-            }
+
+            Button("Не знаю") { length = nil; next() }
+                .font(TypographyTokens.labelMedium)
+                .foregroundStyle(ColorTokens.textSecondary)
+                .frame(minHeight: SpacingTokens.touchMinimum)
+
+            LunePrimaryButton(title: length == nil ? "Пропустить" : "Продолжить", action: next)
         }
     }
-}
-
-// MARK: - Шаг 4: Длительность месячных
-
-struct PeriodDurationStep: View {
-    
-    @Binding var duration: Int?
-    @State private var selectedDuration: Int = 5
-    
-    var body: some View {
-        VStack(spacing: SpacingTokens.xl) {
-            VStack(spacing: SpacingTokens.sm) {
-                Text("Сколько обычно длятся месячные?")
-                    .luneTitleLarge()
-                    .multilineTextAlignment(.center)
-                
-                Text("Количество дней кровотечения")
-                    .luneBodyMedium()
-                    .multilineTextAlignment(.center)
-            }
-            .padding(.top, SpacingTokens.xxl)
-            
-            VStack(spacing: SpacingTokens.md) {
-                Text("\(selectedDuration) дней")
-                    .font(TypographyTokens.numberMedium)
-                    .foregroundStyle(ColorTokens.rosePrimary)
-                
-                Picker("Длительность", selection: $selectedDuration) {
-                    ForEach(2...10, id: \.self) { days in
-                        Text("\(days)").tag(days)
-                    }
-                }
-                .pickerStyle(.wheel)
-                .frame(height: 150)
-                
-                Button(action: {
-                    duration = nil
-                }) {
-                    Text("Не знаю")
-                        .font(TypographyTokens.labelMedium)
-                        .foregroundStyle(ColorTokens.textSecondary)
-                }
-            }
-            
-            Spacer()
-        }
-        .luneScreenPadding()
-        .onChange(of: selectedDuration) { _, newValue in
-            duration = newValue
-        }
-        .onAppear {
-            if let dur = duration {
-                selectedDuration = dur
-            }
-        }
-    }
-}
-
-// MARK: - Шаг 5: Завершение
-
-struct CompletionStep: View {
-    
-    var body: some View {
-        VStack(spacing: SpacingTokens.xl) {
-            Spacer()
-            
-            Image(systemName: "checkmark.circle.fill")
-                .font(.system(size: 100))
-                .foregroundStyle(ColorTokens.rosePrimary)
-            
-            VStack(spacing: SpacingTokens.sm) {
-                Text("Всё готово!")
-                    .luneDisplayLarge()
-                
-                Text("Начните отслеживать цикл и заботиться о своём здоровье")
-                    .luneBodyMedium()
-                    .multilineTextAlignment(.center)
-            }
-            
-            Spacer()
-        }
-        .luneScreenPadding()
-    }
-}
-
-#Preview {
-    OnboardingFlow()
-        .environmentObject(AppState())
 }

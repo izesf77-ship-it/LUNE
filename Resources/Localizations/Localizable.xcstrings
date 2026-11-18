@@ -1,0 +1,70 @@
+{
+  "sourceLanguage" : "ru",
+  "strings" : {
+    "Не удалось загрузить данные" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не удалось загрузить данные"
+          }
+        }
+      }
+    },
+    "Запись сохранена" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Запись сохранена"
+          }
+        }
+      }
+    },
+    "Все данные хранятся на этом iPhone" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Все данные хранятся на этом iPhone"
+          }
+        }
+      }
+    },
+    "Прогноз рассчитан на основании %lld предыдущих циклов" : {
+      "localizations" : {
+        "ru" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Прогноз рассчитан на основании %lld предыдущего цикла"
+                }
+              },
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Прогноз рассчитан на основании %lld предыдущих циклов"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Прогноз рассчитан на основании %lld предыдущих циклов"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Прогноз рассчитан на основании %lld предыдущих циклов"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
