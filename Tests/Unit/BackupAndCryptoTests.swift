@@ -53,7 +53,7 @@ final class BackupAndCryptoTests: XCTestCase {
     func testBackupPayloadCodable() throws {
         let payload = BackupPayload(
             formatVersion: BackupPayload.currentFormatVersion,
-            appVersion: "1.0",
+            appVersion: LuneAppVersion.marketing,
             schemaVersion: "1.1.0",
             createdAt: "2026-11-18T10:00:00Z",
             records: [BackupRecordDTO(entity: "DailyNote", fields: ["id": UUID().uuidString, "text": "Тест"])]

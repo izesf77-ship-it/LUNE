@@ -17,7 +17,7 @@ struct AboutView: View {
                     Text("LUNÉ")
                         .font(TypographyTokens.displayLarge)
                         .foregroundStyle(ColorTokens.textPrimary)
-                    Text("Версия 1.0 · iOS 17+")
+                    Text("\(LuneAppVersion.displayText) · iOS 17+")
                         .font(TypographyTokens.bodySmall)
                         .foregroundStyle(ColorTokens.textSecondary)
                 }

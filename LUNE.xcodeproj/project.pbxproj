@@ -11,80 +11,81 @@
 		AA000000000000000000001C /* AppState.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000001B /* AppState.swift */; };
 		AA000000000000000000001E /* MainTabView.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000001D /* MainTabView.swift */; };
 		AA0000000000000000000020 /* ContentView.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000001F /* ContentView.swift */; };
-		AA0000000000000000000022 /* BackupService.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000021 /* BackupService.swift */; };
-		AA0000000000000000000024 /* DatabaseManager.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000023 /* DatabaseManager.swift */; };
-		AA0000000000000000000026 /* AnimationTokens.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000025 /* AnimationTokens.swift */; };
-		AA0000000000000000000028 /* ColorTokens.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000027 /* ColorTokens.swift */; };
-		AA000000000000000000002A /* ComponentCatalogView.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000029 /* ComponentCatalogView.swift */; };
-		AA000000000000000000002C /* LuneBottomSheet.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000002B /* LuneBottomSheet.swift */; };
-		AA000000000000000000002E /* LuneButtons.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000002D /* LuneButtons.swift */; };
-		AA0000000000000000000030 /* LuneCard.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000002F /* LuneCard.swift */; };
-		AA0000000000000000000032 /* LuneChips.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000031 /* LuneChips.swift */; };
-		AA0000000000000000000034 /* LuneInputs.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000033 /* LuneInputs.swift */; };
-		AA0000000000000000000036 /* LunePickers.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000035 /* LunePickers.swift */; };
-		AA0000000000000000000038 /* LuneStates.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000037 /* LuneStates.swift */; };
-		AA000000000000000000003A /* LuneVisualizations.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000039 /* LuneVisualizations.swift */; };
-		AA000000000000000000003C /* RadiusTokens.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000003B /* RadiusTokens.swift */; };
-		AA000000000000000000003E /* ShadowTokens.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000003D /* ShadowTokens.swift */; };
-		AA0000000000000000000040 /* SpacingTokens.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000003F /* SpacingTokens.swift */; };
-		AA0000000000000000000042 /* TypographyTokens.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000041 /* TypographyTokens.swift */; };
-		AA0000000000000000000044 /* CalendarDate.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000043 /* CalendarDate.swift */; };
-		AA0000000000000000000046 /* AppMode.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000045 /* AppMode.swift */; };
-		AA0000000000000000000048 /* DailyEntry.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000047 /* DailyEntry.swift */; };
-		AA000000000000000000004A /* FertilityModels.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000049 /* FertilityModels.swift */; };
-		AA000000000000000000004C /* MenstrualPeriod.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000004B /* MenstrualPeriod.swift */; };
-		AA000000000000000000004E /* SystemModels.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000004D /* SystemModels.swift */; };
-		AA0000000000000000000050 /* UserProfile.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000004F /* UserProfile.swift */; };
-		AA0000000000000000000052 /* NotificationService.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000051 /* NotificationService.swift */; };
-		AA0000000000000000000054 /* CyclePredictionEngine.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000053 /* CyclePredictionEngine.swift */; };
-		AA0000000000000000000056 /* FertilityInsightsEngine.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000055 /* FertilityInsightsEngine.swift */; };
-		AA0000000000000000000058 /* RecommendationEngine.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000057 /* RecommendationEngine.swift */; };
-		AA000000000000000000005A /* PDFReportService.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000059 /* PDFReportService.swift */; };
-		AA000000000000000000005C /* BiometricAuth.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000005B /* BiometricAuth.swift */; };
-		AA000000000000000000005E /* KeychainStore.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000005D /* KeychainStore.swift */; };
-		AA0000000000000000000060 /* PrivacyShield.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000005F /* PrivacyShield.swift */; };
-		AA0000000000000000000062 /* AnalyticsView.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000061 /* AnalyticsView.swift */; };
-		AA0000000000000000000064 /* HistoricalCyclesView.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000063 /* HistoricalCyclesView.swift */; };
-		AA0000000000000000000066 /* CalendarView.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000065 /* CalendarView.swift */; };
-		AA0000000000000000000068 /* DayDetailView.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000067 /* DayDetailView.swift */; };
-		AA000000000000000000006A /* PeriodEditorView.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000069 /* PeriodEditorView.swift */; };
-		AA000000000000000000006C /* CycleHomeView.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000006B /* CycleHomeView.swift */; };
-		AA000000000000000000006E /* HomeView.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000006D /* HomeView.swift */; };
-		AA0000000000000000000070 /* PlanningHomeView.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000006F /* PlanningHomeView.swift */; };
-		AA0000000000000000000072 /* BasalTemperatureView.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000071 /* BasalTemperatureView.swift */; };
-		AA0000000000000000000074 /* CervicalMucusView.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000073 /* CervicalMucusView.swift */; };
-		AA0000000000000000000076 /* JournalView.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000075 /* JournalView.swift */; };
-		AA0000000000000000000078 /* MoodJournalView.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000077 /* MoodJournalView.swift */; };
-		AA000000000000000000007A /* SymptomJournalView.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000079 /* SymptomJournalView.swift */; };
-		AA000000000000000000007C /* TestEditors.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000007B /* TestEditors.swift */; };
-		AA000000000000000000007E /* WellbeingView.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000007D /* WellbeingView.swift */; };
-		AA0000000000000000000080 /* MedicalLibraryView.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000007F /* MedicalLibraryView.swift */; };
-		AA0000000000000000000082 /* OnboardingDataNormalizer.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000081 /* OnboardingDataNormalizer.swift */; };
-		AA0000000000000000000084 /* OnboardingFlow.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000083 /* OnboardingFlow.swift */; };
-		AA0000000000000000000086 /* OnboardingLateSteps.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000085 /* OnboardingLateSteps.swift */; };
-		AA0000000000000000000088 /* WelcomeView.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000087 /* WelcomeView.swift */; };
-		AA000000000000000000008A /* FertilityInsightsView.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000089 /* FertilityInsightsView.swift */; };
-		AA000000000000000000008C /* PlanningExtras.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000008B /* PlanningExtras.swift */; };
-		AA000000000000000000008E /* RecommendationsView.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000008D /* RecommendationsView.swift */; };
-		AA0000000000000000000090 /* ReportsView.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000008F /* ReportsView.swift */; };
-		AA0000000000000000000092 /* AboutView.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000091 /* AboutView.swift */; };
-		AA0000000000000000000094 /* BackupSettingsView.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000093 /* BackupSettingsView.swift */; };
-		AA0000000000000000000096 /* LoveLetterView.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000095 /* LoveLetterView.swift */; };
-		AA0000000000000000000098 /* ModeSwitcherView.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000097 /* ModeSwitcherView.swift */; };
-		AA000000000000000000009A /* NotificationSettingsView.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000099 /* NotificationSettingsView.swift */; };
-		AA000000000000000000009C /* PrivacySettingsView.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000009B /* PrivacySettingsView.swift */; };
-		AA000000000000000000009E /* SettingsView.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000009D /* SettingsView.swift */; };
-		AA00000000000000000000A0 /* LUNEApp.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000009F /* LUNEApp.swift */; };
-		AA00000000000000000000A2 /* MedicalKnowledge.swift in build */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000A1 /* MedicalKnowledge.swift */; };
-		AA00000000000000000000A4 /* PersistenceIntegrationTests.swift in build */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000A3 /* PersistenceIntegrationTests.swift */; };
-		AA00000000000000000000A6 /* BackupAndCryptoTests.swift in build */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000A5 /* BackupAndCryptoTests.swift */; };
-		AA00000000000000000000A8 /* CyclePredictionTests.swift in build */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000A7 /* CyclePredictionTests.swift */; };
-		AA00000000000000000000AA /* FertilityAndSafetyTests.swift in build */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000A9 /* FertilityAndSafetyTests.swift */; };
-		AA00000000000000000000AC /* OnboardingTests.swift in build */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000AB /* OnboardingTests.swift */; };
-		AA00000000000000000000AE /* RecommendationTests.swift in build */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000AD /* RecommendationTests.swift */; };
-		AA00000000000000000000B0 /* Assets.xcassets in build */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000AF /* Assets.xcassets */; };
-		AA00000000000000000000B2 /* Localizable.xcstrings in build */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000B1 /* Localizable.xcstrings */; };
-		AA00000000000000000000B4 /* Info.plist in build */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000B3 /* Info.plist */; };
+		AA0000000000000000000022 /* LuneAppVersion.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000021 /* LuneAppVersion.swift */; };
+		AA0000000000000000000024 /* BackupService.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000023 /* BackupService.swift */; };
+		AA0000000000000000000026 /* DatabaseManager.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000025 /* DatabaseManager.swift */; };
+		AA0000000000000000000028 /* AnimationTokens.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000027 /* AnimationTokens.swift */; };
+		AA000000000000000000002A /* ColorTokens.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000029 /* ColorTokens.swift */; };
+		AA000000000000000000002C /* ComponentCatalogView.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000002B /* ComponentCatalogView.swift */; };
+		AA000000000000000000002E /* LuneBottomSheet.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000002D /* LuneBottomSheet.swift */; };
+		AA0000000000000000000030 /* LuneButtons.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000002F /* LuneButtons.swift */; };
+		AA0000000000000000000032 /* LuneCard.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000031 /* LuneCard.swift */; };
+		AA0000000000000000000034 /* LuneChips.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000033 /* LuneChips.swift */; };
+		AA0000000000000000000036 /* LuneInputs.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000035 /* LuneInputs.swift */; };
+		AA0000000000000000000038 /* LunePickers.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000037 /* LunePickers.swift */; };
+		AA000000000000000000003A /* LuneStates.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000039 /* LuneStates.swift */; };
+		AA000000000000000000003C /* LuneVisualizations.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000003B /* LuneVisualizations.swift */; };
+		AA000000000000000000003E /* RadiusTokens.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000003D /* RadiusTokens.swift */; };
+		AA0000000000000000000040 /* ShadowTokens.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000003F /* ShadowTokens.swift */; };
+		AA0000000000000000000042 /* SpacingTokens.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000041 /* SpacingTokens.swift */; };
+		AA0000000000000000000044 /* TypographyTokens.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000043 /* TypographyTokens.swift */; };
+		AA0000000000000000000046 /* CalendarDate.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000045 /* CalendarDate.swift */; };
+		AA0000000000000000000048 /* AppMode.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000047 /* AppMode.swift */; };
+		AA000000000000000000004A /* DailyEntry.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000049 /* DailyEntry.swift */; };
+		AA000000000000000000004C /* FertilityModels.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000004B /* FertilityModels.swift */; };
+		AA000000000000000000004E /* MenstrualPeriod.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000004D /* MenstrualPeriod.swift */; };
+		AA0000000000000000000050 /* SystemModels.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000004F /* SystemModels.swift */; };
+		AA0000000000000000000052 /* UserProfile.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000051 /* UserProfile.swift */; };
+		AA0000000000000000000054 /* NotificationService.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000053 /* NotificationService.swift */; };
+		AA0000000000000000000056 /* CyclePredictionEngine.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000055 /* CyclePredictionEngine.swift */; };
+		AA0000000000000000000058 /* FertilityInsightsEngine.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000057 /* FertilityInsightsEngine.swift */; };
+		AA000000000000000000005A /* RecommendationEngine.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000059 /* RecommendationEngine.swift */; };
+		AA000000000000000000005C /* PDFReportService.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000005B /* PDFReportService.swift */; };
+		AA000000000000000000005E /* BiometricAuth.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000005D /* BiometricAuth.swift */; };
+		AA0000000000000000000060 /* KeychainStore.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000005F /* KeychainStore.swift */; };
+		AA0000000000000000000062 /* PrivacyShield.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000061 /* PrivacyShield.swift */; };
+		AA0000000000000000000064 /* AnalyticsView.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000063 /* AnalyticsView.swift */; };
+		AA0000000000000000000066 /* HistoricalCyclesView.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000065 /* HistoricalCyclesView.swift */; };
+		AA0000000000000000000068 /* CalendarView.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000067 /* CalendarView.swift */; };
+		AA000000000000000000006A /* DayDetailView.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000069 /* DayDetailView.swift */; };
+		AA000000000000000000006C /* PeriodEditorView.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000006B /* PeriodEditorView.swift */; };
+		AA000000000000000000006E /* CycleHomeView.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000006D /* CycleHomeView.swift */; };
+		AA0000000000000000000070 /* HomeView.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000006F /* HomeView.swift */; };
+		AA0000000000000000000072 /* PlanningHomeView.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000071 /* PlanningHomeView.swift */; };
+		AA0000000000000000000074 /* BasalTemperatureView.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000073 /* BasalTemperatureView.swift */; };
+		AA0000000000000000000076 /* CervicalMucusView.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000075 /* CervicalMucusView.swift */; };
+		AA0000000000000000000078 /* JournalView.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000077 /* JournalView.swift */; };
+		AA000000000000000000007A /* MoodJournalView.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000079 /* MoodJournalView.swift */; };
+		AA000000000000000000007C /* SymptomJournalView.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000007B /* SymptomJournalView.swift */; };
+		AA000000000000000000007E /* TestEditors.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000007D /* TestEditors.swift */; };
+		AA0000000000000000000080 /* WellbeingView.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000007F /* WellbeingView.swift */; };
+		AA0000000000000000000082 /* MedicalLibraryView.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000081 /* MedicalLibraryView.swift */; };
+		AA0000000000000000000084 /* OnboardingDataNormalizer.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000083 /* OnboardingDataNormalizer.swift */; };
+		AA0000000000000000000086 /* OnboardingFlow.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000085 /* OnboardingFlow.swift */; };
+		AA0000000000000000000088 /* OnboardingLateSteps.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000087 /* OnboardingLateSteps.swift */; };
+		AA000000000000000000008A /* WelcomeView.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000089 /* WelcomeView.swift */; };
+		AA000000000000000000008C /* FertilityInsightsView.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000008B /* FertilityInsightsView.swift */; };
+		AA000000000000000000008E /* PlanningExtras.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000008D /* PlanningExtras.swift */; };
+		AA0000000000000000000090 /* RecommendationsView.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000008F /* RecommendationsView.swift */; };
+		AA0000000000000000000092 /* ReportsView.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000091 /* ReportsView.swift */; };
+		AA0000000000000000000094 /* AboutView.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000093 /* AboutView.swift */; };
+		AA0000000000000000000096 /* BackupSettingsView.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000095 /* BackupSettingsView.swift */; };
+		AA0000000000000000000098 /* LoveLetterView.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000097 /* LoveLetterView.swift */; };
+		AA000000000000000000009A /* ModeSwitcherView.swift in build */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000099 /* ModeSwitcherView.swift */; };
+		AA000000000000000000009C /* NotificationSettingsView.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000009B /* NotificationSettingsView.swift */; };
+		AA000000000000000000009E /* PrivacySettingsView.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000009D /* PrivacySettingsView.swift */; };
+		AA00000000000000000000A0 /* SettingsView.swift in build */ = {isa = PBXBuildFile; fileRef = AA000000000000000000009F /* SettingsView.swift */; };
+		AA00000000000000000000A2 /* LUNEApp.swift in build */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000A1 /* LUNEApp.swift */; };
+		AA00000000000000000000A4 /* MedicalKnowledge.swift in build */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000A3 /* MedicalKnowledge.swift */; };
+		AA00000000000000000000A6 /* PersistenceIntegrationTests.swift in build */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000A5 /* PersistenceIntegrationTests.swift */; };
+		AA00000000000000000000A8 /* BackupAndCryptoTests.swift in build */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000A7 /* BackupAndCryptoTests.swift */; };
+		AA00000000000000000000AA /* CyclePredictionTests.swift in build */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000A9 /* CyclePredictionTests.swift */; };
+		AA00000000000000000000AC /* FertilityAndSafetyTests.swift in build */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000AB /* FertilityAndSafetyTests.swift */; };
+		AA00000000000000000000AE /* OnboardingTests.swift in build */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000AD /* OnboardingTests.swift */; };
+		AA00000000000000000000B0 /* RecommendationTests.swift in build */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000AF /* RecommendationTests.swift */; };
+		AA00000000000000000000B2 /* Assets.xcassets in build */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000B1 /* Assets.xcassets */; };
+		AA00000000000000000000B4 /* Localizable.xcstrings in build */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000B3 /* Localizable.xcstrings */; };
+		AA00000000000000000000B6 /* Info.plist in build */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000B5 /* Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,80 +105,81 @@
 		AA000000000000000000001B /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppState.swift"; sourceTree = "<group>"; };
 		AA000000000000000000001D /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainTabView.swift"; sourceTree = "<group>"; };
 		AA000000000000000000001F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContentView.swift"; sourceTree = "<group>"; };
-		AA0000000000000000000021 /* BackupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BackupService.swift"; sourceTree = "<group>"; };
-		AA0000000000000000000023 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatabaseManager.swift"; sourceTree = "<group>"; };
-		AA0000000000000000000025 /* AnimationTokens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnimationTokens.swift"; sourceTree = "<group>"; };
-		AA0000000000000000000027 /* ColorTokens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ColorTokens.swift"; sourceTree = "<group>"; };
-		AA0000000000000000000029 /* ComponentCatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ComponentCatalogView.swift"; sourceTree = "<group>"; };
-		AA000000000000000000002B /* LuneBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LuneBottomSheet.swift"; sourceTree = "<group>"; };
-		AA000000000000000000002D /* LuneButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LuneButtons.swift"; sourceTree = "<group>"; };
-		AA000000000000000000002F /* LuneCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LuneCard.swift"; sourceTree = "<group>"; };
-		AA0000000000000000000031 /* LuneChips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LuneChips.swift"; sourceTree = "<group>"; };
-		AA0000000000000000000033 /* LuneInputs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LuneInputs.swift"; sourceTree = "<group>"; };
-		AA0000000000000000000035 /* LunePickers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LunePickers.swift"; sourceTree = "<group>"; };
-		AA0000000000000000000037 /* LuneStates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LuneStates.swift"; sourceTree = "<group>"; };
-		AA0000000000000000000039 /* LuneVisualizations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LuneVisualizations.swift"; sourceTree = "<group>"; };
-		AA000000000000000000003B /* RadiusTokens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RadiusTokens.swift"; sourceTree = "<group>"; };
-		AA000000000000000000003D /* ShadowTokens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShadowTokens.swift"; sourceTree = "<group>"; };
-		AA000000000000000000003F /* SpacingTokens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SpacingTokens.swift"; sourceTree = "<group>"; };
-		AA0000000000000000000041 /* TypographyTokens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TypographyTokens.swift"; sourceTree = "<group>"; };
-		AA0000000000000000000043 /* CalendarDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalendarDate.swift"; sourceTree = "<group>"; };
-		AA0000000000000000000045 /* AppMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppMode.swift"; sourceTree = "<group>"; };
-		AA0000000000000000000047 /* DailyEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DailyEntry.swift"; sourceTree = "<group>"; };
-		AA0000000000000000000049 /* FertilityModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FertilityModels.swift"; sourceTree = "<group>"; };
-		AA000000000000000000004B /* MenstrualPeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MenstrualPeriod.swift"; sourceTree = "<group>"; };
-		AA000000000000000000004D /* SystemModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SystemModels.swift"; sourceTree = "<group>"; };
-		AA000000000000000000004F /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserProfile.swift"; sourceTree = "<group>"; };
-		AA0000000000000000000051 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationService.swift"; sourceTree = "<group>"; };
-		AA0000000000000000000053 /* CyclePredictionEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CyclePredictionEngine.swift"; sourceTree = "<group>"; };
-		AA0000000000000000000055 /* FertilityInsightsEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FertilityInsightsEngine.swift"; sourceTree = "<group>"; };
-		AA0000000000000000000057 /* RecommendationEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecommendationEngine.swift"; sourceTree = "<group>"; };
-		AA0000000000000000000059 /* PDFReportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PDFReportService.swift"; sourceTree = "<group>"; };
-		AA000000000000000000005B /* BiometricAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BiometricAuth.swift"; sourceTree = "<group>"; };
-		AA000000000000000000005D /* KeychainStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeychainStore.swift"; sourceTree = "<group>"; };
-		AA000000000000000000005F /* PrivacyShield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrivacyShield.swift"; sourceTree = "<group>"; };
-		AA0000000000000000000061 /* AnalyticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnalyticsView.swift"; sourceTree = "<group>"; };
-		AA0000000000000000000063 /* HistoricalCyclesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HistoricalCyclesView.swift"; sourceTree = "<group>"; };
-		AA0000000000000000000065 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalendarView.swift"; sourceTree = "<group>"; };
-		AA0000000000000000000067 /* DayDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DayDetailView.swift"; sourceTree = "<group>"; };
-		AA0000000000000000000069 /* PeriodEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PeriodEditorView.swift"; sourceTree = "<group>"; };
-		AA000000000000000000006B /* CycleHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CycleHomeView.swift"; sourceTree = "<group>"; };
-		AA000000000000000000006D /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeView.swift"; sourceTree = "<group>"; };
-		AA000000000000000000006F /* PlanningHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlanningHomeView.swift"; sourceTree = "<group>"; };
-		AA0000000000000000000071 /* BasalTemperatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BasalTemperatureView.swift"; sourceTree = "<group>"; };
-		AA0000000000000000000073 /* CervicalMucusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CervicalMucusView.swift"; sourceTree = "<group>"; };
-		AA0000000000000000000075 /* JournalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JournalView.swift"; sourceTree = "<group>"; };
-		AA0000000000000000000077 /* MoodJournalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MoodJournalView.swift"; sourceTree = "<group>"; };
-		AA0000000000000000000079 /* SymptomJournalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SymptomJournalView.swift"; sourceTree = "<group>"; };
-		AA000000000000000000007B /* TestEditors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TestEditors.swift"; sourceTree = "<group>"; };
-		AA000000000000000000007D /* WellbeingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WellbeingView.swift"; sourceTree = "<group>"; };
-		AA000000000000000000007F /* MedicalLibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MedicalLibraryView.swift"; sourceTree = "<group>"; };
-		AA0000000000000000000081 /* OnboardingDataNormalizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnboardingDataNormalizer.swift"; sourceTree = "<group>"; };
-		AA0000000000000000000083 /* OnboardingFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnboardingFlow.swift"; sourceTree = "<group>"; };
-		AA0000000000000000000085 /* OnboardingLateSteps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnboardingLateSteps.swift"; sourceTree = "<group>"; };
-		AA0000000000000000000087 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WelcomeView.swift"; sourceTree = "<group>"; };
-		AA0000000000000000000089 /* FertilityInsightsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FertilityInsightsView.swift"; sourceTree = "<group>"; };
-		AA000000000000000000008B /* PlanningExtras.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlanningExtras.swift"; sourceTree = "<group>"; };
-		AA000000000000000000008D /* RecommendationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecommendationsView.swift"; sourceTree = "<group>"; };
-		AA000000000000000000008F /* ReportsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReportsView.swift"; sourceTree = "<group>"; };
-		AA0000000000000000000091 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AboutView.swift"; sourceTree = "<group>"; };
-		AA0000000000000000000093 /* BackupSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BackupSettingsView.swift"; sourceTree = "<group>"; };
-		AA0000000000000000000095 /* LoveLetterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoveLetterView.swift"; sourceTree = "<group>"; };
-		AA0000000000000000000097 /* ModeSwitcherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ModeSwitcherView.swift"; sourceTree = "<group>"; };
-		AA0000000000000000000099 /* NotificationSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationSettingsView.swift"; sourceTree = "<group>"; };
-		AA000000000000000000009B /* PrivacySettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrivacySettingsView.swift"; sourceTree = "<group>"; };
-		AA000000000000000000009D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsView.swift"; sourceTree = "<group>"; };
-		AA000000000000000000009F /* LUNEApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LUNEApp.swift"; sourceTree = "<group>"; };
-		AA00000000000000000000A1 /* MedicalKnowledge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MedicalKnowledge.swift"; sourceTree = "<group>"; };
-		AA00000000000000000000A3 /* PersistenceIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PersistenceIntegrationTests.swift"; sourceTree = "<group>"; };
-		AA00000000000000000000A5 /* BackupAndCryptoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BackupAndCryptoTests.swift"; sourceTree = "<group>"; };
-		AA00000000000000000000A7 /* CyclePredictionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CyclePredictionTests.swift"; sourceTree = "<group>"; };
-		AA00000000000000000000A9 /* FertilityAndSafetyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FertilityAndSafetyTests.swift"; sourceTree = "<group>"; };
-		AA00000000000000000000AB /* OnboardingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnboardingTests.swift"; sourceTree = "<group>"; };
-		AA00000000000000000000AD /* RecommendationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecommendationTests.swift"; sourceTree = "<group>"; };
-		AA00000000000000000000AF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Assets.xcassets"; sourceTree = "<group>"; };
-		AA00000000000000000000B1 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = "Localizable.xcstrings"; sourceTree = "<group>"; };
-		AA00000000000000000000B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info.plist"; sourceTree = "<group>"; };
+		AA0000000000000000000021 /* LuneAppVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LuneAppVersion.swift"; sourceTree = "<group>"; };
+		AA0000000000000000000023 /* BackupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BackupService.swift"; sourceTree = "<group>"; };
+		AA0000000000000000000025 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatabaseManager.swift"; sourceTree = "<group>"; };
+		AA0000000000000000000027 /* AnimationTokens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnimationTokens.swift"; sourceTree = "<group>"; };
+		AA0000000000000000000029 /* ColorTokens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ColorTokens.swift"; sourceTree = "<group>"; };
+		AA000000000000000000002B /* ComponentCatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ComponentCatalogView.swift"; sourceTree = "<group>"; };
+		AA000000000000000000002D /* LuneBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LuneBottomSheet.swift"; sourceTree = "<group>"; };
+		AA000000000000000000002F /* LuneButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LuneButtons.swift"; sourceTree = "<group>"; };
+		AA0000000000000000000031 /* LuneCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LuneCard.swift"; sourceTree = "<group>"; };
+		AA0000000000000000000033 /* LuneChips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LuneChips.swift"; sourceTree = "<group>"; };
+		AA0000000000000000000035 /* LuneInputs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LuneInputs.swift"; sourceTree = "<group>"; };
+		AA0000000000000000000037 /* LunePickers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LunePickers.swift"; sourceTree = "<group>"; };
+		AA0000000000000000000039 /* LuneStates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LuneStates.swift"; sourceTree = "<group>"; };
+		AA000000000000000000003B /* LuneVisualizations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LuneVisualizations.swift"; sourceTree = "<group>"; };
+		AA000000000000000000003D /* RadiusTokens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RadiusTokens.swift"; sourceTree = "<group>"; };
+		AA000000000000000000003F /* ShadowTokens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShadowTokens.swift"; sourceTree = "<group>"; };
+		AA0000000000000000000041 /* SpacingTokens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SpacingTokens.swift"; sourceTree = "<group>"; };
+		AA0000000000000000000043 /* TypographyTokens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TypographyTokens.swift"; sourceTree = "<group>"; };
+		AA0000000000000000000045 /* CalendarDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalendarDate.swift"; sourceTree = "<group>"; };
+		AA0000000000000000000047 /* AppMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppMode.swift"; sourceTree = "<group>"; };
+		AA0000000000000000000049 /* DailyEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DailyEntry.swift"; sourceTree = "<group>"; };
+		AA000000000000000000004B /* FertilityModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FertilityModels.swift"; sourceTree = "<group>"; };
+		AA000000000000000000004D /* MenstrualPeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MenstrualPeriod.swift"; sourceTree = "<group>"; };
+		AA000000000000000000004F /* SystemModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SystemModels.swift"; sourceTree = "<group>"; };
+		AA0000000000000000000051 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserProfile.swift"; sourceTree = "<group>"; };
+		AA0000000000000000000053 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationService.swift"; sourceTree = "<group>"; };
+		AA0000000000000000000055 /* CyclePredictionEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CyclePredictionEngine.swift"; sourceTree = "<group>"; };
+		AA0000000000000000000057 /* FertilityInsightsEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FertilityInsightsEngine.swift"; sourceTree = "<group>"; };
+		AA0000000000000000000059 /* RecommendationEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecommendationEngine.swift"; sourceTree = "<group>"; };
+		AA000000000000000000005B /* PDFReportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PDFReportService.swift"; sourceTree = "<group>"; };
+		AA000000000000000000005D /* BiometricAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BiometricAuth.swift"; sourceTree = "<group>"; };
+		AA000000000000000000005F /* KeychainStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeychainStore.swift"; sourceTree = "<group>"; };
+		AA0000000000000000000061 /* PrivacyShield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrivacyShield.swift"; sourceTree = "<group>"; };
+		AA0000000000000000000063 /* AnalyticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnalyticsView.swift"; sourceTree = "<group>"; };
+		AA0000000000000000000065 /* HistoricalCyclesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HistoricalCyclesView.swift"; sourceTree = "<group>"; };
+		AA0000000000000000000067 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalendarView.swift"; sourceTree = "<group>"; };
+		AA0000000000000000000069 /* DayDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DayDetailView.swift"; sourceTree = "<group>"; };
+		AA000000000000000000006B /* PeriodEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PeriodEditorView.swift"; sourceTree = "<group>"; };
+		AA000000000000000000006D /* CycleHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CycleHomeView.swift"; sourceTree = "<group>"; };
+		AA000000000000000000006F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeView.swift"; sourceTree = "<group>"; };
+		AA0000000000000000000071 /* PlanningHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlanningHomeView.swift"; sourceTree = "<group>"; };
+		AA0000000000000000000073 /* BasalTemperatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BasalTemperatureView.swift"; sourceTree = "<group>"; };
+		AA0000000000000000000075 /* CervicalMucusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CervicalMucusView.swift"; sourceTree = "<group>"; };
+		AA0000000000000000000077 /* JournalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JournalView.swift"; sourceTree = "<group>"; };
+		AA0000000000000000000079 /* MoodJournalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MoodJournalView.swift"; sourceTree = "<group>"; };
+		AA000000000000000000007B /* SymptomJournalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SymptomJournalView.swift"; sourceTree = "<group>"; };
+		AA000000000000000000007D /* TestEditors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TestEditors.swift"; sourceTree = "<group>"; };
+		AA000000000000000000007F /* WellbeingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WellbeingView.swift"; sourceTree = "<group>"; };
+		AA0000000000000000000081 /* MedicalLibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MedicalLibraryView.swift"; sourceTree = "<group>"; };
+		AA0000000000000000000083 /* OnboardingDataNormalizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnboardingDataNormalizer.swift"; sourceTree = "<group>"; };
+		AA0000000000000000000085 /* OnboardingFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnboardingFlow.swift"; sourceTree = "<group>"; };
+		AA0000000000000000000087 /* OnboardingLateSteps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnboardingLateSteps.swift"; sourceTree = "<group>"; };
+		AA0000000000000000000089 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WelcomeView.swift"; sourceTree = "<group>"; };
+		AA000000000000000000008B /* FertilityInsightsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FertilityInsightsView.swift"; sourceTree = "<group>"; };
+		AA000000000000000000008D /* PlanningExtras.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlanningExtras.swift"; sourceTree = "<group>"; };
+		AA000000000000000000008F /* RecommendationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecommendationsView.swift"; sourceTree = "<group>"; };
+		AA0000000000000000000091 /* ReportsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReportsView.swift"; sourceTree = "<group>"; };
+		AA0000000000000000000093 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AboutView.swift"; sourceTree = "<group>"; };
+		AA0000000000000000000095 /* BackupSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BackupSettingsView.swift"; sourceTree = "<group>"; };
+		AA0000000000000000000097 /* LoveLetterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoveLetterView.swift"; sourceTree = "<group>"; };
+		AA0000000000000000000099 /* ModeSwitcherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ModeSwitcherView.swift"; sourceTree = "<group>"; };
+		AA000000000000000000009B /* NotificationSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationSettingsView.swift"; sourceTree = "<group>"; };
+		AA000000000000000000009D /* PrivacySettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrivacySettingsView.swift"; sourceTree = "<group>"; };
+		AA000000000000000000009F /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsView.swift"; sourceTree = "<group>"; };
+		AA00000000000000000000A1 /* LUNEApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LUNEApp.swift"; sourceTree = "<group>"; };
+		AA00000000000000000000A3 /* MedicalKnowledge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MedicalKnowledge.swift"; sourceTree = "<group>"; };
+		AA00000000000000000000A5 /* PersistenceIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PersistenceIntegrationTests.swift"; sourceTree = "<group>"; };
+		AA00000000000000000000A7 /* BackupAndCryptoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BackupAndCryptoTests.swift"; sourceTree = "<group>"; };
+		AA00000000000000000000A9 /* CyclePredictionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CyclePredictionTests.swift"; sourceTree = "<group>"; };
+		AA00000000000000000000AB /* FertilityAndSafetyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FertilityAndSafetyTests.swift"; sourceTree = "<group>"; };
+		AA00000000000000000000AD /* OnboardingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnboardingTests.swift"; sourceTree = "<group>"; };
+		AA00000000000000000000AF /* RecommendationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecommendationTests.swift"; sourceTree = "<group>"; };
+		AA00000000000000000000B1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Assets.xcassets"; sourceTree = "<group>"; };
+		AA00000000000000000000B3 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = "Localizable.xcstrings"; sourceTree = "<group>"; };
+		AA00000000000000000000B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,27 +203,27 @@
 		AA0000000000000000000002 = {
 			isa = PBXGroup;
 			children = (
-				AA00000000000000000000D4 /* App sources */,
-				AA00000000000000000000D5 /* Tests */,
-				AA00000000000000000000D6 /* Resources */,
-				AA00000000000000000000B3 /* Info.plist */,
+				AA00000000000000000000D7 /* App sources */,
+				AA00000000000000000000D8 /* Tests */,
+				AA00000000000000000000D9 /* Resources */,
+				AA00000000000000000000B5 /* Info.plist */,
 				AA0000000000000000000003 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000D4 /* App sources */ = {
+		AA00000000000000000000D7 /* App sources */ = {
 			isa = PBXGroup;
 			children = (
-				AA000000000000000000009F /* LUNEApp.swift */,
+				AA00000000000000000000A1 /* LUNEApp.swift */,
 				AA000000000000000000001F /* ContentView.swift */,
-				AA00000000000000000000B5 /* App */,
-				AA00000000000000000000B6 /* Core */,
-				AA00000000000000000000C2 /* Features */,
-				AA00000000000000000000CD /* Resources */,
+				AA00000000000000000000B7 /* App */,
+				AA00000000000000000000B8 /* Core */,
+				AA00000000000000000000C5 /* Features */,
+				AA00000000000000000000D0 /* Resources */,
 			);
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000B5 /* App */ = {
+		AA00000000000000000000B7 /* App */ = {
 			isa = PBXGroup;
 			children = (
 				AA0000000000000000000019 /* AppLockView.swift */,
@@ -231,317 +233,326 @@
 			path = "App";
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000B6 /* Core */ = {
+		AA00000000000000000000B8 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				AA00000000000000000000B7 /* Backup */,
-				AA00000000000000000000B8 /* Database */,
-				AA00000000000000000000B9 /* DesignSystem */,
-				AA00000000000000000000BB /* Extensions */,
-				AA00000000000000000000BC /* Models */,
-				AA00000000000000000000BD /* Notifications */,
-				AA00000000000000000000BE /* Predictions */,
-				AA00000000000000000000BF /* Recommendations */,
-				AA00000000000000000000C0 /* Reports */,
-				AA00000000000000000000C1 /* Security */,
+				AA00000000000000000000B9 /* AppInfo */,
+				AA00000000000000000000BA /* Backup */,
+				AA00000000000000000000BB /* Database */,
+				AA00000000000000000000BC /* DesignSystem */,
+				AA00000000000000000000BE /* Extensions */,
+				AA00000000000000000000BF /* Models */,
+				AA00000000000000000000C0 /* Notifications */,
+				AA00000000000000000000C1 /* Predictions */,
+				AA00000000000000000000C2 /* Recommendations */,
+				AA00000000000000000000C3 /* Reports */,
+				AA00000000000000000000C4 /* Security */,
 			);
 			path = "Core";
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000B7 /* Backup */ = {
+		AA00000000000000000000B9 /* AppInfo */ = {
 			isa = PBXGroup;
 			children = (
-				AA0000000000000000000021 /* BackupService.swift */,
+				AA0000000000000000000021 /* LuneAppVersion.swift */,
+			);
+			path = "AppInfo";
+			sourceTree = "<group>";
+		};
+		AA00000000000000000000BA /* Backup */ = {
+			isa = PBXGroup;
+			children = (
+				AA0000000000000000000023 /* BackupService.swift */,
 			);
 			path = "Backup";
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000B8 /* Database */ = {
+		AA00000000000000000000BB /* Database */ = {
 			isa = PBXGroup;
 			children = (
-				AA0000000000000000000023 /* DatabaseManager.swift */,
+				AA0000000000000000000025 /* DatabaseManager.swift */,
 			);
 			path = "Database";
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000B9 /* DesignSystem */ = {
+		AA00000000000000000000BC /* DesignSystem */ = {
 			isa = PBXGroup;
 			children = (
-				AA0000000000000000000025 /* AnimationTokens.swift */,
-				AA0000000000000000000027 /* ColorTokens.swift */,
-				AA00000000000000000000BA /* Components */,
-				AA000000000000000000003B /* RadiusTokens.swift */,
-				AA000000000000000000003D /* ShadowTokens.swift */,
-				AA000000000000000000003F /* SpacingTokens.swift */,
-				AA0000000000000000000041 /* TypographyTokens.swift */,
+				AA0000000000000000000027 /* AnimationTokens.swift */,
+				AA0000000000000000000029 /* ColorTokens.swift */,
+				AA00000000000000000000BD /* Components */,
+				AA000000000000000000003D /* RadiusTokens.swift */,
+				AA000000000000000000003F /* ShadowTokens.swift */,
+				AA0000000000000000000041 /* SpacingTokens.swift */,
+				AA0000000000000000000043 /* TypographyTokens.swift */,
 			);
 			path = "DesignSystem";
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000BA /* Components */ = {
+		AA00000000000000000000BD /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				AA0000000000000000000029 /* ComponentCatalogView.swift */,
-				AA000000000000000000002B /* LuneBottomSheet.swift */,
-				AA000000000000000000002D /* LuneButtons.swift */,
-				AA000000000000000000002F /* LuneCard.swift */,
-				AA0000000000000000000031 /* LuneChips.swift */,
-				AA0000000000000000000033 /* LuneInputs.swift */,
-				AA0000000000000000000035 /* LunePickers.swift */,
-				AA0000000000000000000037 /* LuneStates.swift */,
-				AA0000000000000000000039 /* LuneVisualizations.swift */,
+				AA000000000000000000002B /* ComponentCatalogView.swift */,
+				AA000000000000000000002D /* LuneBottomSheet.swift */,
+				AA000000000000000000002F /* LuneButtons.swift */,
+				AA0000000000000000000031 /* LuneCard.swift */,
+				AA0000000000000000000033 /* LuneChips.swift */,
+				AA0000000000000000000035 /* LuneInputs.swift */,
+				AA0000000000000000000037 /* LunePickers.swift */,
+				AA0000000000000000000039 /* LuneStates.swift */,
+				AA000000000000000000003B /* LuneVisualizations.swift */,
 			);
 			path = "Components";
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000BB /* Extensions */ = {
+		AA00000000000000000000BE /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				AA0000000000000000000043 /* CalendarDate.swift */,
+				AA0000000000000000000045 /* CalendarDate.swift */,
 			);
 			path = "Extensions";
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000BC /* Models */ = {
+		AA00000000000000000000BF /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				AA0000000000000000000045 /* AppMode.swift */,
-				AA0000000000000000000047 /* DailyEntry.swift */,
-				AA0000000000000000000049 /* FertilityModels.swift */,
-				AA000000000000000000004B /* MenstrualPeriod.swift */,
-				AA000000000000000000004D /* SystemModels.swift */,
-				AA000000000000000000004F /* UserProfile.swift */,
+				AA0000000000000000000047 /* AppMode.swift */,
+				AA0000000000000000000049 /* DailyEntry.swift */,
+				AA000000000000000000004B /* FertilityModels.swift */,
+				AA000000000000000000004D /* MenstrualPeriod.swift */,
+				AA000000000000000000004F /* SystemModels.swift */,
+				AA0000000000000000000051 /* UserProfile.swift */,
 			);
 			path = "Models";
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000BD /* Notifications */ = {
+		AA00000000000000000000C0 /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
-				AA0000000000000000000051 /* NotificationService.swift */,
+				AA0000000000000000000053 /* NotificationService.swift */,
 			);
 			path = "Notifications";
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000BE /* Predictions */ = {
+		AA00000000000000000000C1 /* Predictions */ = {
 			isa = PBXGroup;
 			children = (
-				AA0000000000000000000053 /* CyclePredictionEngine.swift */,
-				AA0000000000000000000055 /* FertilityInsightsEngine.swift */,
+				AA0000000000000000000055 /* CyclePredictionEngine.swift */,
+				AA0000000000000000000057 /* FertilityInsightsEngine.swift */,
 			);
 			path = "Predictions";
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000BF /* Recommendations */ = {
+		AA00000000000000000000C2 /* Recommendations */ = {
 			isa = PBXGroup;
 			children = (
-				AA0000000000000000000057 /* RecommendationEngine.swift */,
+				AA0000000000000000000059 /* RecommendationEngine.swift */,
 			);
 			path = "Recommendations";
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000C0 /* Reports */ = {
+		AA00000000000000000000C3 /* Reports */ = {
 			isa = PBXGroup;
 			children = (
-				AA0000000000000000000059 /* PDFReportService.swift */,
+				AA000000000000000000005B /* PDFReportService.swift */,
 			);
 			path = "Reports";
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000C1 /* Security */ = {
+		AA00000000000000000000C4 /* Security */ = {
 			isa = PBXGroup;
 			children = (
-				AA000000000000000000005B /* BiometricAuth.swift */,
-				AA000000000000000000005D /* KeychainStore.swift */,
-				AA000000000000000000005F /* PrivacyShield.swift */,
+				AA000000000000000000005D /* BiometricAuth.swift */,
+				AA000000000000000000005F /* KeychainStore.swift */,
+				AA0000000000000000000061 /* PrivacyShield.swift */,
 			);
 			path = "Security";
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000C2 /* Features */ = {
+		AA00000000000000000000C5 /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				AA00000000000000000000C3 /* Analytics */,
-				AA00000000000000000000C4 /* Calendar */,
-				AA00000000000000000000C5 /* Home */,
-				AA00000000000000000000C6 /* Journal */,
-				AA00000000000000000000C7 /* Knowledge */,
-				AA00000000000000000000C8 /* Onboarding */,
-				AA00000000000000000000C9 /* Planning */,
-				AA00000000000000000000CA /* Recommendations */,
-				AA00000000000000000000CB /* Reports */,
-				AA00000000000000000000CC /* Settings */,
+				AA00000000000000000000C6 /* Analytics */,
+				AA00000000000000000000C7 /* Calendar */,
+				AA00000000000000000000C8 /* Home */,
+				AA00000000000000000000C9 /* Journal */,
+				AA00000000000000000000CA /* Knowledge */,
+				AA00000000000000000000CB /* Onboarding */,
+				AA00000000000000000000CC /* Planning */,
+				AA00000000000000000000CD /* Recommendations */,
+				AA00000000000000000000CE /* Reports */,
+				AA00000000000000000000CF /* Settings */,
 			);
 			path = "Features";
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000C3 /* Analytics */ = {
+		AA00000000000000000000C6 /* Analytics */ = {
 			isa = PBXGroup;
 			children = (
-				AA0000000000000000000061 /* AnalyticsView.swift */,
-				AA0000000000000000000063 /* HistoricalCyclesView.swift */,
+				AA0000000000000000000063 /* AnalyticsView.swift */,
+				AA0000000000000000000065 /* HistoricalCyclesView.swift */,
 			);
 			path = "Analytics";
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000C4 /* Calendar */ = {
+		AA00000000000000000000C7 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
-				AA0000000000000000000065 /* CalendarView.swift */,
-				AA0000000000000000000067 /* DayDetailView.swift */,
-				AA0000000000000000000069 /* PeriodEditorView.swift */,
+				AA0000000000000000000067 /* CalendarView.swift */,
+				AA0000000000000000000069 /* DayDetailView.swift */,
+				AA000000000000000000006B /* PeriodEditorView.swift */,
 			);
 			path = "Calendar";
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000C5 /* Home */ = {
+		AA00000000000000000000C8 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				AA000000000000000000006B /* CycleHomeView.swift */,
-				AA000000000000000000006D /* HomeView.swift */,
-				AA000000000000000000006F /* PlanningHomeView.swift */,
+				AA000000000000000000006D /* CycleHomeView.swift */,
+				AA000000000000000000006F /* HomeView.swift */,
+				AA0000000000000000000071 /* PlanningHomeView.swift */,
 			);
 			path = "Home";
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000C6 /* Journal */ = {
+		AA00000000000000000000C9 /* Journal */ = {
 			isa = PBXGroup;
 			children = (
-				AA0000000000000000000071 /* BasalTemperatureView.swift */,
-				AA0000000000000000000073 /* CervicalMucusView.swift */,
-				AA0000000000000000000075 /* JournalView.swift */,
-				AA0000000000000000000077 /* MoodJournalView.swift */,
-				AA0000000000000000000079 /* SymptomJournalView.swift */,
-				AA000000000000000000007B /* TestEditors.swift */,
-				AA000000000000000000007D /* WellbeingView.swift */,
+				AA0000000000000000000073 /* BasalTemperatureView.swift */,
+				AA0000000000000000000075 /* CervicalMucusView.swift */,
+				AA0000000000000000000077 /* JournalView.swift */,
+				AA0000000000000000000079 /* MoodJournalView.swift */,
+				AA000000000000000000007B /* SymptomJournalView.swift */,
+				AA000000000000000000007D /* TestEditors.swift */,
+				AA000000000000000000007F /* WellbeingView.swift */,
 			);
 			path = "Journal";
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000C7 /* Knowledge */ = {
+		AA00000000000000000000CA /* Knowledge */ = {
 			isa = PBXGroup;
 			children = (
-				AA000000000000000000007F /* MedicalLibraryView.swift */,
+				AA0000000000000000000081 /* MedicalLibraryView.swift */,
 			);
 			path = "Knowledge";
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000C8 /* Onboarding */ = {
+		AA00000000000000000000CB /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				AA0000000000000000000081 /* OnboardingDataNormalizer.swift */,
-				AA0000000000000000000083 /* OnboardingFlow.swift */,
-				AA0000000000000000000085 /* OnboardingLateSteps.swift */,
-				AA0000000000000000000087 /* WelcomeView.swift */,
+				AA0000000000000000000083 /* OnboardingDataNormalizer.swift */,
+				AA0000000000000000000085 /* OnboardingFlow.swift */,
+				AA0000000000000000000087 /* OnboardingLateSteps.swift */,
+				AA0000000000000000000089 /* WelcomeView.swift */,
 			);
 			path = "Onboarding";
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000C9 /* Planning */ = {
+		AA00000000000000000000CC /* Planning */ = {
 			isa = PBXGroup;
 			children = (
-				AA0000000000000000000089 /* FertilityInsightsView.swift */,
-				AA000000000000000000008B /* PlanningExtras.swift */,
+				AA000000000000000000008B /* FertilityInsightsView.swift */,
+				AA000000000000000000008D /* PlanningExtras.swift */,
 			);
 			path = "Planning";
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000CA /* Recommendations */ = {
+		AA00000000000000000000CD /* Recommendations */ = {
 			isa = PBXGroup;
 			children = (
-				AA000000000000000000008D /* RecommendationsView.swift */,
+				AA000000000000000000008F /* RecommendationsView.swift */,
 			);
 			path = "Recommendations";
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000CB /* Reports */ = {
+		AA00000000000000000000CE /* Reports */ = {
 			isa = PBXGroup;
 			children = (
-				AA000000000000000000008F /* ReportsView.swift */,
+				AA0000000000000000000091 /* ReportsView.swift */,
 			);
 			path = "Reports";
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000CC /* Settings */ = {
+		AA00000000000000000000CF /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				AA0000000000000000000091 /* AboutView.swift */,
-				AA0000000000000000000093 /* BackupSettingsView.swift */,
-				AA0000000000000000000095 /* LoveLetterView.swift */,
-				AA0000000000000000000097 /* ModeSwitcherView.swift */,
-				AA0000000000000000000099 /* NotificationSettingsView.swift */,
-				AA000000000000000000009B /* PrivacySettingsView.swift */,
-				AA000000000000000000009D /* SettingsView.swift */,
+				AA0000000000000000000093 /* AboutView.swift */,
+				AA0000000000000000000095 /* BackupSettingsView.swift */,
+				AA0000000000000000000097 /* LoveLetterView.swift */,
+				AA0000000000000000000099 /* ModeSwitcherView.swift */,
+				AA000000000000000000009B /* NotificationSettingsView.swift */,
+				AA000000000000000000009D /* PrivacySettingsView.swift */,
+				AA000000000000000000009F /* SettingsView.swift */,
 			);
 			path = "Settings";
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000CD /* Resources */ = {
+		AA00000000000000000000D0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				AA00000000000000000000CE /* MedicalKnowledge */,
+				AA00000000000000000000D1 /* MedicalKnowledge */,
 			);
 			path = "Resources";
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000CE /* MedicalKnowledge */ = {
+		AA00000000000000000000D1 /* MedicalKnowledge */ = {
 			isa = PBXGroup;
 			children = (
-				AA00000000000000000000A1 /* MedicalKnowledge.swift */,
+				AA00000000000000000000A3 /* MedicalKnowledge.swift */,
 			);
 			path = "MedicalKnowledge";
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000D5 /* Tests */ = {
+		AA00000000000000000000D8 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				AA00000000000000000000CF /* Integration */,
-				AA00000000000000000000D0 /* Unit */,
+				AA00000000000000000000D2 /* Integration */,
+				AA00000000000000000000D3 /* Unit */,
 			);
 			path = "Tests";
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000CF /* Integration */ = {
+		AA00000000000000000000D2 /* Integration */ = {
 			isa = PBXGroup;
 			children = (
-				AA00000000000000000000A3 /* PersistenceIntegrationTests.swift */,
+				AA00000000000000000000A5 /* PersistenceIntegrationTests.swift */,
 			);
 			path = "Integration";
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000D0 /* Unit */ = {
+		AA00000000000000000000D3 /* Unit */ = {
 			isa = PBXGroup;
 			children = (
-				AA00000000000000000000A5 /* BackupAndCryptoTests.swift */,
-				AA00000000000000000000A7 /* CyclePredictionTests.swift */,
-				AA00000000000000000000A9 /* FertilityAndSafetyTests.swift */,
-				AA00000000000000000000AB /* OnboardingTests.swift */,
-				AA00000000000000000000AD /* RecommendationTests.swift */,
+				AA00000000000000000000A7 /* BackupAndCryptoTests.swift */,
+				AA00000000000000000000A9 /* CyclePredictionTests.swift */,
+				AA00000000000000000000AB /* FertilityAndSafetyTests.swift */,
+				AA00000000000000000000AD /* OnboardingTests.swift */,
+				AA00000000000000000000AF /* RecommendationTests.swift */,
 			);
 			path = "Unit";
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000D6 /* Resources */ = {
+		AA00000000000000000000D9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				AA00000000000000000000D1 /* Assets */,
-				AA00000000000000000000D2 /* Localizations */,
+				AA00000000000000000000D4 /* Assets */,
+				AA00000000000000000000D5 /* Localizations */,
 			);
 			path = "Resources";
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000D1 /* Assets */ = {
+		AA00000000000000000000D4 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				AA00000000000000000000AF /* Assets.xcassets */,
+				AA00000000000000000000B1 /* Assets.xcassets */,
 			);
 			path = "Assets";
 			sourceTree = "<group>";
 		};
-		AA00000000000000000000D2 /* Localizations */ = {
+		AA00000000000000000000D5 /* Localizations */ = {
 			isa = PBXGroup;
 			children = (
-				AA00000000000000000000B1 /* Localizable.xcstrings */,
+				AA00000000000000000000B3 /* Localizable.xcstrings */,
 			);
 			path = "Localizations";
 			sourceTree = "<group>";
@@ -637,8 +648,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA00000000000000000000B0 /* resource */,
 				AA00000000000000000000B2 /* resource */,
+				AA00000000000000000000B4 /* resource */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -725,6 +736,7 @@
 				AA000000000000000000009E /* source */,
 				AA00000000000000000000A0 /* source */,
 				AA00000000000000000000A2 /* source */,
+				AA00000000000000000000A4 /* source */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -732,12 +744,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA00000000000000000000A4 /* test source */,
 				AA00000000000000000000A6 /* test source */,
 				AA00000000000000000000A8 /* test source */,
 				AA00000000000000000000AA /* test source */,
 				AA00000000000000000000AC /* test source */,
 				AA00000000000000000000AE /* test source */,
+				AA00000000000000000000B0 /* test source */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -816,7 +828,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lune.cycletracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -847,7 +859,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lune.cycletracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

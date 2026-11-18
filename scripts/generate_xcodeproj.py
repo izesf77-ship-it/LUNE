@@ -10,6 +10,17 @@ ROOT = Path(__file__).resolve().parents[1]
 PROJECT = ROOT / "LUNE.xcodeproj"
 PBXPROJ = PROJECT / "project.pbxproj"
 SCHEME_DIR = PROJECT / "xcshareddata" / "xcschemes"
+VERSION_FILE = ROOT / "VERSION"
+
+
+def marketing_version():
+    """Единственный источник пользовательской версии — файл VERSION."""
+    return VERSION_FILE.read_text(encoding="utf-8").strip()
+
+
+def build_number():
+    """Локально — 1; в CI подставляется монотонный github.run_number."""
+    return os.environ.get("BUILD_NUMBER", "1").strip()
 
 APP_SOURCE_DIRS = ["App", "Core", "Features", "Resources"]
 APP_ROOT_SOURCES = ["LUNEApp.swift", "ContentView.swift"]
@@ -520,13 +531,16 @@ def main():
         ("VALIDATE_PRODUCT", "YES"),
     ], False)
 
+    version = marketing_version()
+    build = build_number()
+
     app_common = [
         ("ASSETCATALOG_COMPILER_APPICON_NAME", "AppIcon"),
         ("CODE_SIGNING_ALLOWED", "NO"),
         ("CODE_SIGNING_REQUIRED", "NO"),
         ('CODE_SIGN_IDENTITY', '""'),
         ("CODE_SIGN_STYLE", "Manual"),
-        ("CURRENT_PROJECT_VERSION", "1"),
+        ("CURRENT_PROJECT_VERSION", build),
         ("DEVELOPMENT_TEAM", '""'),
         ("ENABLE_PREVIEWS", "YES"),
         ("GENERATE_INFOPLIST_FILE", "NO"),
@@ -534,7 +548,7 @@ def main():
         ('INFOPLIST_KEY_CFBundleDisplayName', '"LUNÉ"'),
         ('INFOPLIST_KEY_UILaunchScreen_Generation', "YES"),
         ("LD_RUNPATH_SEARCH_PATHS", '(\n\t\t\t\t\t"$(inherited)",\n\t\t\t\t\t"@executable_path/Frameworks",\n\t\t\t\t)'),
-        ("MARKETING_VERSION", "1.0"),
+        ("MARKETING_VERSION", version),
         ("PRODUCT_BUNDLE_IDENTIFIER", "com.lune.cycletracker"),
         ("PRODUCT_NAME", '"$(TARGET_NAME)"'),
         ('PROVISIONING_PROFILE_SPECIFIER', '""'),
@@ -553,7 +567,7 @@ def main():
         ("CODE_SIGNING_REQUIRED", "NO"),
         ('CODE_SIGN_IDENTITY', '""'),
         ("CODE_SIGN_STYLE", "Manual"),
-        ("CURRENT_PROJECT_VERSION", "1"),
+        ("CURRENT_PROJECT_VERSION", build),
         ("DEVELOPMENT_TEAM", '""'),
         ("GENERATE_INFOPLIST_FILE", "YES"),
         ("PRODUCT_BUNDLE_IDENTIFIER", "com.lune.cycletracker.tests"),
@@ -626,7 +640,11 @@ def main():
 """
     SCHEME_DIR.mkdir(parents=True, exist_ok=True)
     (SCHEME_DIR / "LUNE.xcscheme").write_text(scheme, encoding="utf-8")
-    print(f"Generated {PBXPROJ.relative_to(ROOT)} with {len(app_sources)} app sources, {len(test_sources)} tests, {len(APP_RESOURCES)} resources")
+    print(
+        f"Generated {PBXPROJ.relative_to(ROOT)} with {len(app_sources)} app sources, "
+        f"{len(test_sources)} tests, {len(APP_RESOURCES)} resources "
+        f"(MARKETING_VERSION={version}, CURRENT_PROJECT_VERSION={build})"
+    )
 
 
 if __name__ == "__main__":

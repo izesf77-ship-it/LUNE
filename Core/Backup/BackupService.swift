@@ -144,7 +144,7 @@ final class BackupService {
 
         let payload = BackupPayload(
             formatVersion: BackupPayload.currentFormatVersion,
-            appVersion: Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0",
+            appVersion: LuneAppVersion.marketing,
             schemaVersion: "1.1.0",
             createdAt: ISO8601DateFormatter().string(from: Date()),
             records: records

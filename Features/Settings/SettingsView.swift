@@ -73,7 +73,7 @@ struct SettingsView: View {
                         }
                     }
 
-                    Text("Версия 1.0 · без интернета, аккаунта и аналитики")
+                    Text("\(LuneAppVersion.displayText) · без интернета, аккаунта и аналитики")
                         .font(TypographyTokens.caption)
                         .foregroundStyle(ColorTokens.textTertiary)
                         .frame(maxWidth: .infinity)

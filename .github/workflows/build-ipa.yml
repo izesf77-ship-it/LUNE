@@ -15,6 +15,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Resolve version and build number
+        run: |
+          VERSION=$(tr -d '[:space:]' < VERSION)
+          BUILD_NUMBER=${{ github.run_number }}
+          if [ -z "$VERSION" ]; then echo "VERSION file is empty"; exit 1; fi
+          echo "MARKETING_VERSION=$VERSION" >> "$GITHUB_ENV"
+          echo "BUILD_NUMBER=$BUILD_NUMBER" >> "$GITHUB_ENV"
+          echo "IPA_NAME=LUNE-v${VERSION}-build${BUILD_NUMBER}-unsigned.ipa" >> "$GITHUB_ENV"
+          echo "ARTIFACT_NAME=LUNE-v${VERSION}-build${BUILD_NUMBER}-unsigned" >> "$GITHUB_ENV"
+          echo "Building LUNÉ v${VERSION} (${BUILD_NUMBER})"
+
       - name: Inspect toolchain
         run: |
           echo "--- xcode-select ---"
@@ -34,6 +45,9 @@ jobs:
             -configuration Release \
             -sdk iphoneos \
             -destination 'generic/platform=iOS' \
+            MARKETING_VERSION="$MARKETING_VERSION" \
+            CURRENT_PROJECT_VERSION="$BUILD_NUMBER" \
+            INFOPLIST_EXPAND_BUILD_SETTINGS=YES \
             CODE_SIGNING_ALLOWED=NO \
             CODE_SIGNING_REQUIRED=NO \
             CODE_SIGN_IDENTITY="" \
@@ -62,25 +76,46 @@ jobs:
 
       - name: Create IPA
         run: |
-          rm -rf Payload LUNE-unsigned.ipa
+          rm -rf Payload "${IPA_NAME}"
           mkdir -p Payload
           cp -R build/Release-iphoneos/LUNE.app Payload/
-          zip -qry LUNE-unsigned.ipa Payload
+          zip -qry "${IPA_NAME}" Payload
           rm -rf Payload
-          test -s LUNE-unsigned.ipa
+          test -s "${IPA_NAME}"
+          echo "Created ${IPA_NAME}"
 
-      - name: Verify IPA contents
+      - name: Verify version inside IPA
         run: |
-          unzip -l LUNE-unsigned.ipa
-          unzip -p LUNE-unsigned.ipa Payload/LUNE.app/Info.plist > /tmp/LUNE-Info.plist
+          unzip -l "${IPA_NAME}"
+          unzip -p "${IPA_NAME}" Payload/LUNE.app/Info.plist > /tmp/LUNE-Info.plist
           plutil -lint /tmp/LUNE-Info.plist
-          echo "IPA_OK"
+
+          ACTUAL_VERSION=$(plutil -extract CFBundleShortVersionString raw -o - /tmp/LUNE-Info.plist)
+          ACTUAL_BUILD=$(plutil -extract CFBundleVersion raw -o - /tmp/LUNE-Info.plist)
+          ACTUAL_ID=$(plutil -extract CFBundleIdentifier raw -o - /tmp/LUNE-Info.plist)
+
+          echo "Inside IPA: version=${ACTUAL_VERSION} build=${ACTUAL_BUILD} id=${ACTUAL_ID}"
+          echo "Expected:   version=${MARKETING_VERSION} build=${BUILD_NUMBER} id=com.lune.cycletracker"
+
+          if [ "$ACTUAL_VERSION" != "$MARKETING_VERSION" ]; then
+            echo "ERROR: CFBundleShortVersionString mismatch"
+            exit 1
+          fi
+          if [ "$ACTUAL_BUILD" != "$BUILD_NUMBER" ]; then
+            echo "ERROR: CFBundleVersion mismatch"
+            exit 1
+          fi
+          if [ "$ACTUAL_ID" != "com.lune.cycletracker" ]; then
+            echo "ERROR: CFBundleIdentifier mismatch"
+            exit 1
+          fi
+          echo "IPA_OK: version, build and bundle identifier verified"
 
       - name: Upload IPA artifact
         uses: actions/upload-artifact@v4
         with:
-          name: LUNE-unsigned
-          path: LUNE-unsigned.ipa
+          name: ${{ env.ARTIFACT_NAME }}
+          path: ${{ env.IPA_NAME }}
           retention-days: 30
           if-no-files-found: error
 
@@ -90,6 +125,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Resolve version and build number
+        run: |
+          VERSION=$(tr -d '[:space:]' < VERSION)
+          BUILD_NUMBER=${{ github.run_number }}
+          echo "MARKETING_VERSION=$VERSION" >> "$GITHUB_ENV"
+          echo "BUILD_NUMBER=$BUILD_NUMBER" >> "$GITHUB_ENV"
 
       - name: Available simulators
         run: xcrun simctl list devices available | head -40
@@ -107,6 +149,8 @@ jobs:
             -configuration Debug \
             -sdk iphonesimulator \
             -destination "platform=iOS Simulator,name=$SIMULATOR" \
+            MARKETING_VERSION="$MARKETING_VERSION" \
+            CURRENT_PROJECT_VERSION="$BUILD_NUMBER" \
             CODE_SIGNING_ALLOWED=NO \
             CODE_SIGNING_REQUIRED=NO \
             CODE_SIGN_IDENTITY="" \

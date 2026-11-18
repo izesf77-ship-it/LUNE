@@ -47,6 +47,19 @@ python3 scripts/generate_app_icon.py
 
 Иконка приложения подготавливается из `logo.png` (исходный логотип проекта): скрипт уменьшает его до 1024×1024 и сохраняет в asset catalog.
 
+## Версионирование
+
+Единственный источник пользовательской версии — файл `VERSION` (сейчас `1.1.0`).
+Генератор проекта читает его и записывает `MARKETING_VERSION` в `project.pbxproj`;
+`Info.plist` использует `$(MARKETING_VERSION)` и `$(CURRENT_PROJECT_VERSION)`, поэтому
+конфликтующих значений нет. Повторный запуск генератора не сбрасывает версию.
+
+В CI номер сборки — монотонный `${{ github.run_number }}`. Он передаётся как
+`CURRENT_PROJECT_VERSION`, попадает в `CFBundleVersion` и в имя файла.
+Приложение показывает реальные значения из Bundle: «Версия 1.1.0 (12)».
+
+Плановые функциональные релизы: 1.2.0, 1.3.0 …; исправления без новой функциональности: 1.1.1, 1.1.2 …
+
 ## Сборка
 
 CI: `.github/workflows/build-ipa.yml`, раннер `xcode-27`.
@@ -54,7 +67,8 @@ CI: `.github/workflows/build-ipa.yml`, раннер `xcode-27`.
 - device-сборка: `xcodebuild ... -sdk iphoneos -destination 'generic/platform=iOS'`;
 - подпись отключена (`CODE_SIGNING_ALLOWED=NO`, `CODE_SIGNING_REQUIRED=NO`, пустые `CODE_SIGN_IDENTITY` / `DEVELOPMENT_TEAM`);
 - проверяется, что внутри IPA находится arm64 device-исполняемый файл, а не симуляторный;
-- артефакт: `LUNE-unsigned` → `LUNE-unsigned.ipa`.
+- из IPA извлекается `Info.plist` и сверяются `CFBundleShortVersionString`, `CFBundleVersion`, `CFBundleIdentifier` — при расхождении сборка падает;
+- IPA и артефакт называются `LUNE-v1.1.0-build12-unsigned.ipa` / `LUNE-v1.1.0-build12-unsigned` (номер подставляется автоматически).
 
 Tests запускаются отдельным job на iOS Simulator.
 
