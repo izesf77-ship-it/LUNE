@@ -232,8 +232,11 @@ def main():
                 )
                 add(f"\t\t\t\t{value} /* {child_group_name} */,")
             else:
-                fid = app_file_refs.get(value) or test_file_refs.get(value) or resource_refs.get(value)
-                add(f"\t\t\t\t{fid} /* {Path(value).name} */,")
+                name = Path(value).name
+                fid = file_refs_by_name.get(name)
+                if fid is None:
+                    raise SystemExit(f"Missing file reference for {value}")
+                add(f"\t\t\t\t{fid} /* {name} */,")
         add("\t\t\t);")
         if path != ".":
             add(f'\t\t\tpath = {quote(path)};')
@@ -305,6 +308,11 @@ def main():
     app_group_id = oid()
     tests_group_id = oid()
     resources_group_id = oid()
+
+    file_refs_by_name = {
+        Path(rel).name: fid
+        for rel, fid in {**app_file_refs, **test_file_refs, **resource_refs}.items()
+    }
 
     add("/* Begin PBXGroup section */")
     add(f"\t\t{ids['mainGroup']} = {{")

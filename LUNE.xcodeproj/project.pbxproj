@@ -496,7 +496,7 @@
 		AA00000000000000000000C9 /* Integration */ = {
 			isa = PBXGroup;
 			children = (
-				None /* PersistenceIntegrationTests.swift */,
+				AA000000000000000000009F /* PersistenceIntegrationTests.swift */,
 			);
 			path = "Integration";
 			sourceTree = "<group>";
@@ -504,10 +504,10 @@
 		AA00000000000000000000CA /* Unit */ = {
 			isa = PBXGroup;
 			children = (
-				None /* BackupAndCryptoTests.swift */,
-				None /* CyclePredictionTests.swift */,
-				None /* FertilityAndSafetyTests.swift */,
-				None /* RecommendationTests.swift */,
+				AA00000000000000000000A1 /* BackupAndCryptoTests.swift */,
+				AA00000000000000000000A3 /* CyclePredictionTests.swift */,
+				AA00000000000000000000A5 /* FertilityAndSafetyTests.swift */,
+				AA00000000000000000000A7 /* RecommendationTests.swift */,
 			);
 			path = "Unit";
 			sourceTree = "<group>";
@@ -524,7 +524,7 @@
 		AA00000000000000000000CB /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				None /* Assets.xcassets */,
+				AA00000000000000000000A9 /* Assets.xcassets */,
 			);
 			path = "Assets";
 			sourceTree = "<group>";
@@ -532,7 +532,7 @@
 		AA00000000000000000000CC /* Localizations */ = {
 			isa = PBXGroup;
 			children = (
-				None /* Localizable.xcstrings */,
+				AA00000000000000000000AB /* Localizable.xcstrings */,
 			);
 			path = "Localizations";
 			sourceTree = "<group>";
