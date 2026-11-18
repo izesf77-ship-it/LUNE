@@ -46,7 +46,7 @@ final class CyclePredictionTests: XCTestCase {
             today: day(2026, 3, 22)
         ))
         XCTAssertGreaterThan(prediction.cycleLengthSpread, 5)
-        XCTAssertGreaterThan(prediction.nextStartRange.upperBound.days(until: prediction.nextStartRange.lowerBound), 4)
+        XCTAssertGreaterThan(prediction.nextStartRange.lowerBound.days(until: prediction.nextStartRange.upperBound), 4)
     }
 
     func testDelayIsDetectedWithoutPregnancyConclusion() {
@@ -75,7 +75,7 @@ final class CyclePredictionTests: XCTestCase {
             today: day(2026, 3, 20)
         ))
         XCTAssertEqual(prediction.confidence, .insufficient)
-        XCTAssertGreaterThan(prediction.nextStartRange.upperBound.days(until: prediction.nextStartRange.lowerBound), 8)
+        XCTAssertGreaterThan(prediction.nextStartRange.lowerBound.days(until: prediction.nextStartRange.upperBound), 8)
         XCTAssertTrue(prediction.explanation.contains("Недостаточно"))
     }
 

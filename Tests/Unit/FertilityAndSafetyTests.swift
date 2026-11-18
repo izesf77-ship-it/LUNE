@@ -75,25 +75,29 @@ final class FertilityAndSafetyTests: XCTestCase {
     }
 
     func testNegativeTestAndProlongedDelayScenarios() {
+        // 4 подтверждённых начала -> 3 интервала -> уверенность .low
+        let starts = [day(2026, 1, 1), day(2026, 1, 29), day(2026, 2, 26), day(2026, 3, 26)]
         let prediction = CyclePredictionEngine.predict(CyclePredictionInput(
-            confirmedStarts: [day(2026, 1, 1), day(2026, 1, 29), day(2026, 2, 26)],
-            today: day(2026, 4, 7)
+            confirmedStarts: starts,
+            today: day(2026, 5, 5)
         ))
+        XCTAssertEqual(prediction.confidence, .low)
+
         let negative = MissedPeriodEvaluator.evaluate(
             prediction: prediction,
-            today: day(2026, 4, 7),
-            pregnancyTests: [(day(2026, 4, 5), .negative)],
+            today: day(2026, 5, 5),
+            pregnancyTests: [(day(2026, 5, 3), .negative)],
             hasLoggingGap: false
         )
         XCTAssertEqual(negative?.scenario, .negativeTest)
 
         let longDelay = CyclePredictionEngine.predict(CyclePredictionInput(
-            confirmedStarts: [day(2026, 1, 1), day(2026, 1, 29), day(2026, 2, 26)],
-            today: day(2026, 4, 20)
+            confirmedStarts: starts,
+            today: day(2026, 5, 18)
         ))
         let prolonged = MissedPeriodEvaluator.evaluate(
             prediction: longDelay,
-            today: day(2026, 4, 20),
+            today: day(2026, 5, 18),
             pregnancyTests: [],
             hasLoggingGap: false
         )
@@ -101,7 +105,7 @@ final class FertilityAndSafetyTests: XCTestCase {
 
         let gap = MissedPeriodEvaluator.evaluate(
             prediction: prediction,
-            today: day(2026, 4, 7),
+            today: day(2026, 5, 5),
             pregnancyTests: [],
             hasLoggingGap: true
         )
