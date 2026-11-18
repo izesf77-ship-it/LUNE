@@ -58,7 +58,7 @@ final class RecommendationTests: XCTestCase {
     }
 
     func testPositivePregnancyTestHasHighestPriority() {
-        let items = RecommendationEngine.recommendations(for: context(positivePregnancy: true, delay: true))
+        let items = RecommendationEngine.recommendations(for: context(delay: true, positivePregnancy: true))
         XCTAssertEqual(items.first?.recommendation.id, "positive-test-confirmation")
     }
 
