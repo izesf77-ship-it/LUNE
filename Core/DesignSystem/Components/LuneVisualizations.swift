@@ -211,8 +211,18 @@ struct FlowLayout: Layout {
 
     private struct Row {
         var items: [(view: LayoutSubviews.Element, width: CGFloat, height: CGFloat)]
-        var totalWidth: CGFloat { items.reduce(0) { $0 + $1.width } + spacing * CGFloat(max(items.count - 1, 0)) }
-        var rowHeight: CGFloat { items.map(\.height).max() ?? 0 }
+        var totalWidth: CGFloat {
+            var widths: CGFloat = 0
+            for item in items { widths += item.width }
+            let gaps = max(items.count - 1, 0)
+            return widths + spacing * CGFloat(gaps)
+        }
+
+        var rowHeight: CGFloat {
+            var highest: CGFloat = 0
+            for item in items { highest = max(highest, item.height) }
+            return highest
+        }
     }
 
     private func arrangeRows(proposal: ProposedViewSize, subviews: Subviews) -> [Row] {

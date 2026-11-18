@@ -69,7 +69,7 @@ final class MenstrualPeriod {
 /// Отдельная запись дня кровотечения — позволяет хранить историю
 /// интенсивности и корректно удалять/редактировать отдельные дни.
 @Model
-final class BleedingDayEntry {
+final class BleedingDayEntry: DayKeyedRecord {
     @Attribute(.unique) var id: UUID
     var createdAt: Date
     var updatedAt: Date

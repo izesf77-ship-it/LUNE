@@ -40,8 +40,8 @@ enum PDFReportService {
             pageNumber += 1
         }
 
-        func ensureSpace(_ height: CGFloat) {
-            if cursorY - height < margin + 30 { newPage() }
+        func ensureSpace(_ height: CGFloat, _ y: inout CGFloat) {
+            if y - height < margin + 30 { newPage() }
         }
 
         newPage()

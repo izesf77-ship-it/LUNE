@@ -80,7 +80,8 @@ enum BackupCrypto {
         guard fileVersion == version else { throw BackupError.unsupportedVersion }
 
         let salt = data.subdata(in: headerLength..<(headerLength + saltLength))
-        let combined = data.subdata(in: (headerLength + saltLength)...)
+        let combinedStart = headerLength + saltLength
+        let combined = data.subdata(in: combinedStart..<data.count)
 
         do {
             let key = try deriveKey(password: password, salt: salt)

@@ -85,7 +85,7 @@ struct PeriodEditorView: View {
     }
 
     private func setup() {
-        let initial = CalendarDate(day).localDate() ?? Date()
+        let initial = day.localDate() ?? Date()
         startDate = period?.startDay.localDate() ?? initial
         if let end = period?.endDay {
             endDate = end.localDate() ?? initial
