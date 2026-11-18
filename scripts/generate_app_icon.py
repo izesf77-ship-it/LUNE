@@ -1,15 +1,18 @@
-"""Generate LUNÉ app icon (1024x1024 PNG) with pure Python stdlib.
+"""Prepare LUNÉ app icon (1024x1024 PNG).
 
-Original minimal mark: five soft rose petals on a blush background.
-No third-party dependencies, no network.
+Prefers the project's original logo.png (resized to 1024). If Pillow is not
+available, falls back to a deterministic pure-stdlib five-petal mark.
+No network access.
 """
 import math
 import struct
 import zlib
 from pathlib import Path
 
+ROOT = Path(__file__).resolve().parents[1]
 SIZE = 1024
-OUT = Path(__file__).resolve().parents[1] / "Resources" / "Assets" / "Assets.xcassets" / "AppIcon.appiconset" / "AppIcon-1024.png"
+OUT = ROOT / "Resources" / "Assets" / "Assets.xcassets" / "AppIcon.appiconset" / "AppIcon-1024.png"
+LOGO = ROOT / "logo.png"
 
 
 def mix(a, b, t):
@@ -18,6 +21,18 @@ def mix(a, b, t):
 
 
 def main():
+    if LOGO.exists():
+        try:
+            from PIL import Image
+            with Image.open(LOGO) as image:
+                image = image.convert("RGBA").resize((SIZE, SIZE), Image.LANCZOS)
+                OUT.parent.mkdir(parents=True, exist_ok=True)
+                image.save(OUT, format="PNG", optimize=True)
+            print(f"Resized {LOGO.name} -> {OUT.relative_to(ROOT)}")
+            return
+        except ImportError:
+            pass
+
     bg = (0xFC, 0xE8, 0xEF)
     bg_edge = (0xF8, 0xDC, 0xE8)
     petal = (0xF4, 0xA6, 0xBE)

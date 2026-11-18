@@ -225,12 +225,18 @@ def main():
         add("\t\t\tchildren = (")
         for kind, value in children:
             if kind == "group":
-                add(f"\t\t\t\t{value} /* {value} */,")
+                child_group_name = next(
+                    (g.name for g in list(app_groups.values()) + list(test_groups.values()) + list(resource_groups.values())
+                     if g.id == value),
+                    "Group"
+                )
+                add(f"\t\t\t\t{value} /* {child_group_name} */,")
             else:
                 fid = app_file_refs.get(value) or test_file_refs.get(value) or resource_refs.get(value)
                 add(f"\t\t\t\t{fid} /* {Path(value).name} */,")
         add("\t\t\t);")
-        add(f'\t\t\tpath = {quote(path)};')
+        if path != ".":
+            add(f'\t\t\tpath = {quote(path)};')
         add('\t\t\tsourceTree = "<group>";')
         add("\t\t};")
 
@@ -284,8 +290,8 @@ def main():
     add("/* End PBXFileReference section */")
     add("")
 
+    add("/* Begin PBXFrameworksBuildPhase section */")
     for key in ["appFrameworks", "testFrameworks"]:
-        add("/* Begin PBXFrameworksBuildPhase section */")
         add(f"\t\t{ids[key]} /* Frameworks */ = {{")
         add("\t\t\tisa = PBXFrameworksBuildPhase;")
         add("\t\t\tbuildActionMask = 2147483647;")
@@ -293,8 +299,8 @@ def main():
         add("\t\t\t);")
         add("\t\t\trunOnlyForDeploymentPostprocessing = 0;")
         add("\t\t};")
-        add("/* End PBXFrameworksBuildPhase section */")
-        add("")
+    add("/* End PBXFrameworksBuildPhase section */")
+    add("")
 
     app_group_id = oid()
     tests_group_id = oid()
@@ -517,7 +523,7 @@ def main():
         ("ENABLE_PREVIEWS", "YES"),
         ("GENERATE_INFOPLIST_FILE", "NO"),
         ("INFOPLIST_FILE", "Info.plist"),
-        ('INFOPLIST_KEY_CFBundleDisplayName', 'LUNÉ'),
+        ('INFOPLIST_KEY_CFBundleDisplayName', '"LUNÉ"'),
         ('INFOPLIST_KEY_UILaunchScreen_Generation', "YES"),
         ("LD_RUNPATH_SEARCH_PATHS", '(\n\t\t\t\t\t"$(inherited)",\n\t\t\t\t\t"@executable_path/Frameworks",\n\t\t\t\t)'),
         ("MARKETING_VERSION", "1.0"),
