@@ -1,4 +1,4 @@
-"""Prepare the LUNÉ iOS AppIcon from the approved logo.png.
+"""Prepare the LUNE iOS AppIcon from the approved logo.png.
 
 The artwork in logo.png is a ready-made rounded "icon inside an icon" with
 transparent margins and a drop shadow. iOS applies its own icon shape, so this

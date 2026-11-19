@@ -13,7 +13,7 @@ struct AppLockView: View {
                 .font(.system(size: 64))
                 .foregroundStyle(ColorTokens.rosePrimary)
 
-            Text("LUNÉ защищён")
+            Text("LUNE защищён")
                 .font(TypographyTokens.displayMedium)
                 .foregroundStyle(ColorTokens.textPrimary)
 

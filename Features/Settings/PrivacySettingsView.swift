@@ -109,7 +109,7 @@ struct PrivacySettingsView: View {
             return
         }
         Task { @MainActor in
-            let ok = await BiometricAuth.authenticate(reason: "Включить защиту LUNÉ")
+            let ok = await BiometricAuth.authenticate(reason: "Включить защиту LUNE")
             if ok {
                 appState.profile?.faceIDEnabled = true
                 appState.refresh()

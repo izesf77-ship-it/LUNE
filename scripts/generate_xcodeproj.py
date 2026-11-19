@@ -545,7 +545,7 @@ def main():
         ("ENABLE_PREVIEWS", "YES"),
         ("GENERATE_INFOPLIST_FILE", "NO"),
         ("INFOPLIST_FILE", "Info.plist"),
-        ('INFOPLIST_KEY_CFBundleDisplayName', '"LUNÉ"'),
+        ('INFOPLIST_KEY_CFBundleDisplayName', '"LUNE"'),
         ('INFOPLIST_KEY_UILaunchScreen_Generation', "YES"),
         ("LD_RUNPATH_SEARCH_PATHS", '(\n\t\t\t\t\t"$(inherited)",\n\t\t\t\t\t"@executable_path/Frameworks",\n\t\t\t\t)'),
         ("MARKETING_VERSION", version),

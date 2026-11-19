@@ -29,7 +29,7 @@ enum PDFReportService {
             UIGraphicsBeginPDFPage()
             cursorY = pageHeight - margin - 20
             drawText(
-                "LUNÉ",
+                "LUNE",
                 at: CGPoint(x: margin, y: cursorY),
                 font: UIFont.systemFont(ofSize: 11, weight: .bold),
                 color: UIColor(hex: 0xA64D72)

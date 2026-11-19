@@ -3,7 +3,7 @@ import SwiftData
 
 // MARK: - Schema versions
 
-/// Версия 1: исходная схема LUNÉ.
+/// Версия 1: исходная схема LUNE.
 enum LuneSchemaV1: VersionedSchema {
     static let versionIdentifier = Schema.Version(1, 0, 0)
 

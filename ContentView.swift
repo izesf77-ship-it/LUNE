@@ -61,7 +61,7 @@ struct SplashView: View {
             }
             .frame(width: 96, height: 96)
 
-            Text("LUNÉ")
+            Text("LUNE")
                 .font(TypographyTokens.displayLarge)
                 .foregroundStyle(ColorTokens.textPrimary)
 
@@ -75,7 +75,7 @@ struct SplashView: View {
             withAnimation(.easeOut(duration: 0.45)) { appeared = true }
         }
         .accessibilityElement(children: .combine)
-        .accessibilityLabel("LUNÉ. Загрузка")
+        .accessibilityLabel("LUNE. Загрузка")
     }
 }
 

@@ -1,7 +1,7 @@
 import SwiftUI
 import UIKit
 
-/// LUNÉ Design System — длительности, кривые и тактильная обратная связь.
+/// LUNE Design System — длительности, кривые и тактильная обратная связь.
 enum AnimationTokens {
 
     static let instant: Double = 0.1

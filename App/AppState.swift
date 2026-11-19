@@ -34,7 +34,7 @@ final class AppState: ObservableObject {
 
         if profile?.faceIDEnabled == true {
             isLocked = !(await BiometricAuth.authenticate(
-                reason: "Подтвердите доступ к вашим данным LUNÉ"
+                reason: "Подтвердите доступ к вашим данным LUNE"
             ))
         }
         isLoading = false

@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// Дизайн-система LUNÉ: Типографические токены
+/// Дизайн-система LUNE: Типографические токены
 /// SF Pro с поддержкой Dynamic Type и кириллицы
 struct TypographyTokens {
     

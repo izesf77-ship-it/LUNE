@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// Базовая карточка LUNÉ: мягкие скругления и ненавязчивая тень.
+/// Базовая карточка LUNE: мягкие скругления и ненавязчивая тень.
 struct LuneCard<Content: View>: View {
     let content: Content
     var padding: CGFloat = SpacingTokens.cardPadding

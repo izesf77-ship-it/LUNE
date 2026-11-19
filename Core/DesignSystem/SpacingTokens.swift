@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// Дизайн-система LUNÉ: Отступы и размеры
+/// Дизайн-система LUNE: Отступы и размеры
 struct SpacingTokens {
     
     // MARK: - Spacing Scale

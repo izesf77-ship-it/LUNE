@@ -13,7 +13,7 @@ enum BackupError: Error, LocalizedError {
 
     var errorDescription: String? {
         switch self {
-        case .invalidFormat: return "Файл не является резервной копией LUNÉ."
+        case .invalidFormat: return "Файл не является резервной копией LUNE."
         case .unsupportedVersion: return "Версия резервной копии не поддерживается."
         case .wrongPasswordOrCorrupted: return "Неверный пароль или повреждённый файл."
         case .emptyBackup: return "В резервной копии нет записей."

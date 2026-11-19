@@ -44,7 +44,7 @@ struct WelcomeView: View {
                         .foregroundStyle(ColorTokens.textPrimary)
                         .multilineTextAlignment(.center)
 
-                    Text("LUNÉ — тихое место, где можно заботиться о себе и замечать свой ритм. Без спешки, без лишних вопросов и только на твоём iPhone.")
+                    Text("LUNE — тихое место, где можно заботиться о себе и замечать свой ритм. Без спешки, без лишних вопросов и только на твоём iPhone.")
                         .font(TypographyTokens.Dynamic.bodyLarge)
                         .foregroundStyle(ColorTokens.textSecondary)
                         .multilineTextAlignment(.center)
@@ -77,7 +77,7 @@ struct WelcomeView: View {
     }
 }
 
-/// Небольшой оригинальный цветочный знак LUNÉ из SF-фигур.
+/// Небольшой оригинальный цветочный знак LUNE из SF-фигур.
 struct LuneFlowerMark: View {
     let size: CGFloat
     var opacity: Double = 1

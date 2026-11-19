@@ -193,7 +193,7 @@ struct BiometricStep: View {
             LunePrimaryButton(title: "Продолжить") {
                 guard isOn else { next(); return }
                 Task { @MainActor in
-                    let ok = await BiometricAuth.authenticate(reason: "Включить защиту данных LUNÉ")
+                    let ok = await BiometricAuth.authenticate(reason: "Включить защиту данных LUNE")
                     if !ok {
                         isOn = false
                         showWarning = true
@@ -215,8 +215,8 @@ struct FinishStep: View {
         OnboardingStepShell(
             symbol: "checkmark.circle.fill",
             title: "Всё готово",
-            message: "LUNÉ настроен с учётом твоего выбора. В любой момент можно изменить режим, напоминания и уровень приватности в настройках.",
-            buttonTitle: "Открыть LUNÉ",
+            message: "LUNE настроен с учётом твоего выбора. В любой момент можно изменить режим, напоминания и уровень приватности в настройках.",
+            buttonTitle: "Открыть LUNE",
             content: {
                 VStack(alignment: .leading, spacing: SpacingTokens.xxs) {
                     Label("Все данные остаются на этом iPhone", systemImage: "iphone")

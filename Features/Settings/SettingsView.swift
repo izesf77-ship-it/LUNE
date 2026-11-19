@@ -8,7 +8,7 @@ struct SettingsView: View {
             ScrollView {
                 VStack(spacing: SpacingTokens.md) {
                     LuneCard {
-                        LuneSectionHeader(title: "LUNÉ", subtitle: "Ваше пространство — только на этом iPhone")
+                        LuneSectionHeader(title: "LUNE", subtitle: "Ваше пространство — только на этом iPhone")
                         HStack(spacing: SpacingTokens.sm) {
                             Image(systemName: "sparkles")
                                 .font(.system(size: 28))
@@ -69,7 +69,7 @@ struct SettingsView: View {
 
                     settingsGroup("Информация") {
                         NavigationLink { AboutView() } label: {
-                            LuneSettingsRow(icon: "info.circle", title: "О LUNÉ")
+                            LuneSettingsRow(icon: "info.circle", title: "О LUNE")
                         }
                     }
 

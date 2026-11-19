@@ -1,4 +1,4 @@
-name: Build LUNÉ unsigned IPA
+name: Build LUNE unsigned IPA
 
 on:
   push:
@@ -24,7 +24,7 @@ jobs:
           echo "BUILD_NUMBER=$BUILD_NUMBER" >> "$GITHUB_ENV"
           echo "IPA_NAME=LUNE-v${VERSION}-build${BUILD_NUMBER}-unsigned.ipa" >> "$GITHUB_ENV"
           echo "ARTIFACT_NAME=LUNE-v${VERSION}-build${BUILD_NUMBER}-unsigned" >> "$GITHUB_ENV"
-          echo "Building LUNÉ v${VERSION} (${BUILD_NUMBER})"
+          echo "Building LUNE v${VERSION} (${BUILD_NUMBER})"
 
       - name: Inspect toolchain
         run: |

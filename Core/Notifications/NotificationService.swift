@@ -84,7 +84,7 @@ enum NotificationService {
            let components = hourComponents(from: date, hour: 9) {
             requests.append(makeRequest(
                 id: "period",
-                title: "Напоминание из LUNÉ",
+                title: "Напоминание из LUNE",
                 body: "Пора заглянуть в календарь и отметить самочувствие.",
                 components: components,
                 repeats: false
@@ -94,7 +94,7 @@ enum NotificationService {
         if let hour = symptomHour, let components = dailyComponents(hour: hour) {
             requests.append(makeRequest(
                 id: "symptom",
-                title: "Напоминание из LUNÉ",
+                title: "Напоминание из LUNE",
                 body: "Если хотите, внесите сегодняшние наблюдения в дневник.",
                 components: components,
                 repeats: true
@@ -104,7 +104,7 @@ enum NotificationService {
         if let hour = lhHour, let components = dailyComponents(hour: hour) {
             requests.append(makeRequest(
                 id: "lh",
-                title: "Напоминание из LUNÉ",
+                title: "Напоминание из LUNE",
                 body: "Сегодня день для запланированной записи теста.",
                 components: components,
                 repeats: true
@@ -114,7 +114,7 @@ enum NotificationService {
         if let hour = pregnancyHour, let components = dailyComponents(hour: hour) {
             requests.append(makeRequest(
                 id: "pregnancy",
-                title: "Напоминание из LUNÉ",
+                title: "Напоминание из LUNE",
                 body: "Если вы запланировали тест, сегодня подходящий день.",
                 components: components,
                 repeats: true

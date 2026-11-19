@@ -80,7 +80,7 @@ struct OnboardingFlow: View {
             OnboardingStepShell(
                 symbol: "hand.raised.fill",
                 title: "Только твоё. Только здесь",
-                message: "LUNÉ работает полностью офлайн: без аккаунта, интернета и аналитики. Ни одна запись не покидает этот iPhone — даже в облако.",
+                message: "LUNE работает полностью офлайн: без аккаунта, интернета и аналитики. Ни одна запись не покидает этот iPhone — даже в облако.",
                 buttonTitle: "Хорошо"
             ) { step = 1 }
         case 1:

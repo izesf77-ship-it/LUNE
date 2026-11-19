@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>ru</string>
 	<key>CFBundleDisplayName</key>
-	<string>LUNÉ</string>
+	<string>LUNE</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -34,9 +34,9 @@
 	<key>UIUserInterfaceStyle</key>
 	<string>Automatic</string>
 	<key>NSHealthShareUsageDescription</key>
-	<string>LUNÉ не использует Health Kit и не запрашивает доступ к вашим медицинским данным</string>
+	<string>LUNE не использует Health Kit и не запрашивает доступ к вашим медицинским данным</string>
 	<key>NSHealthUpdateUsageDescription</key>
-	<string>LUNÉ не использует Health Kit и не запрашивает доступ к вашим медицинским данным</string>
+	<string>LUNE не использует Health Kit и не запрашивает доступ к вашим медицинским данным</string>
 	<key>NSFaceIDUsageDescription</key>
 	<string>Используется для защиты ваших персональных данных</string>
 	<key>ITSAppUsesNonExemptEncryption</key>

@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// Дизайн-система LUNÉ: Тени и elevation
+/// Дизайн-система LUNE: Тени и elevation
 struct ShadowTokens {
     
     // MARK: - Shadow Styles

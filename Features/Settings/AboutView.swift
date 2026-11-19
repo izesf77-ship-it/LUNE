@@ -14,7 +14,7 @@ struct AboutView: View {
                     }
                     .frame(width: 84, height: 84)
 
-                    Text("LUNÉ")
+                    Text("LUNE")
                         .font(TypographyTokens.displayLarge)
                         .foregroundStyle(ColorTokens.textPrimary)
                     Text("\(LuneAppVersion.displayText) · iOS 17+")
@@ -27,7 +27,7 @@ struct AboutView: View {
                         Text("О приложении")
                             .font(TypographyTokens.titleSmall)
                             .foregroundStyle(ColorTokens.textPrimary)
-                        Text("LUNÉ — офлайн-приложение для наблюдения за менструальным циклом и планирования беременности. Оно помогает вести дневник, видеть ориентировочные даты и сохранять историю на вашем iPhone.")
+                        Text("LUNE — офлайн-приложение для наблюдения за менструальным циклом и планирования беременности. Оно помогает вести дневник, видеть ориентировочные даты и сохранять историю на вашем iPhone.")
                             .font(TypographyTokens.bodyMedium)
                             .foregroundStyle(ColorTokens.textSecondary)
                     }
@@ -58,7 +58,7 @@ struct AboutView: View {
                 LuneInsightCard(
                     symbol: "stethoscope",
                     title: "Медицинская ответственность",
-                    detail: "Материалы справочника носят информационный характер. LUNÉ не ставит диагнозов, не назначает препараты и не заменяет консультацию врача.",
+                    detail: "Материалы справочника носят информационный характер. LUNE не ставит диагнозов, не назначает препараты и не заменяет консультацию врача.",
                     caution: "При выраженных симптомах обратитесь за медицинской помощью."
                 )
             }
@@ -66,7 +66,7 @@ struct AboutView: View {
             .padding(.vertical, SpacingTokens.xs)
         }
         .background(ColorTokens.background)
-        .navigationTitle("О LUNÉ")
+        .navigationTitle("О LUNE")
         .navigationBarTitleDisplayMode(.inline)
     }
 }

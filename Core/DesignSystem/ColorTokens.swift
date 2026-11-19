@@ -1,7 +1,7 @@
 import SwiftUI
 import UIKit
 
-/// LUNÉ Design System — семантические цветовые токены.
+/// LUNE Design System — семантические цветовые токены.
 /// Каждый токен — динамический UIColor, поэтому light/dark variant
 /// выбирается системой автоматически, без жёстко заданных светлых значений.
 enum ColorTokens {

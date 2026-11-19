@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// LUNÉ Design System — радиусы скруглений.
+/// LUNE Design System — радиусы скруглений.
 enum RadiusTokens {
     static let sm: CGFloat = 12
     static let md: CGFloat = 16
